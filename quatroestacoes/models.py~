@@ -1,0 +1,6 @@
+from django.db import models
+
+class Morador(models.Model):
+    id_morador = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=50)
+    sobrenome = models.CharField(max_length=50)
