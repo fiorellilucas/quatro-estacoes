@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Morador, Aviso, Reuniao
 
-# Register your models here.
+admin.site.register([Morador, Aviso, Reuniao])
+

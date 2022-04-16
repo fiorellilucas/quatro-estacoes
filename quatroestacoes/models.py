@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Moradores(models.Model):
+class Morador(models.Model):
     id_morador = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=50)
     sobrenome = models.CharField(max_length=50)
@@ -10,22 +10,30 @@ class Moradores(models.Model):
     interfone = models.IntegerField()
     celular = models.IntegerField()
     email = models.EmailField()
-    sindico = models.BooleanField()
+    sindico = models.BooleanField(verbose_name="É síndico?")
 
 
-class Reservas(models.Model):
+    class Meta:
+        verbose_name_plural = "Moradores"
+
+
+class Reserva(models.Model):
     id_reserva = models.AutoField(primary_key=True)
-    morador = models.ForeignKey(Moradores, on_delete=models.CASCADE, verbose_name="ID do morador")
+    morador = models.ForeignKey(Morador, on_delete=models.CASCADE, verbose_name="ID do morador")
     data = models.DateField()
 
 
-class Reunioes(models.Model):
+class Reuniao(models.Model):
     id_reuniao = models.AutoField(primary_key=True)
     data = models.DateTimeField(verbose_name="Data e horário da reunião")
     assunto = models.CharField(max_length=300)
 
 
-class Avisos(models.Model):
+    class Meta:
+        verbose_name_plural = "Reunioes"
+
+
+class Aviso(models.Model):
     id_aviso = models.AutoField(primary_key=True)
     assunto = models.CharField(max_length=300)
     corpo = models.TextField()
@@ -33,9 +41,9 @@ class Avisos(models.Model):
     data_evento = models.DateTimeField(blank=True, null=True)
 
 
-class Reclamacoes(models.Model):
+class Reclamacao(models.Model):
     id_reclamacao = models.AutoField(primary_key=True)
-    morador = models.ForeignKey(Moradores, on_delete=models.CASCADE, verbose_name="ID do morador")
+    morador = models.ForeignKey(Morador, on_delete=models.CASCADE, verbose_name="ID do morador")
     
     RECLAMACAO = "reclamacao"
     SUGESTAO = "sugestao"
@@ -48,5 +56,9 @@ class Reclamacoes(models.Model):
     assunto = models.CharField(max_length=300)
     corpo = models.TextField()
     data_postagem = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        verbose_name_plural = "Reclamacoes"
 
 
