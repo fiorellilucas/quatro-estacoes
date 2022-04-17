@@ -1,4 +1,3 @@
-from cmath import sin
 from .models import Morador
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -44,7 +43,8 @@ class MoradorForm(ModelForm):
             last_name=sobrenome,
         )
 
-
     class Meta:
         model = Morador
         fields = "__all__"
+
+

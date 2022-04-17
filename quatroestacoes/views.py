@@ -1,10 +1,7 @@
-from unicodedata import name
-from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from django.views.generic.edit import FormView
 from django.views.generic import ListView
-from django.urls import path
 
 from .forms import MoradorForm
 from . import views, models
