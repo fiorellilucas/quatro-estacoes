@@ -1,0 +1,9 @@
+{% if moradores %}
+    <ul>
+    {% for morador in moradores %}
+        <li>morador.nome</li>
+    </ul>
+    {% endfor %}
+{% else %}
+    <p>nenhum morador disponível</p>
+{% endif %}
