@@ -9,6 +9,8 @@ from django.urls import path
 from .forms import MoradorForm
 from . import views, models
 
+from pprint import pprint
+
 
 class IndexView(View):
 
@@ -43,7 +45,12 @@ class MoradorAddView(FormView):
     template_name = "quatroestacoes/moradores/adicionar.html"
     form_class = MoradorForm
     success_url = "../../" # quatroestacoes/
+
+    def form_valid(self, form):
+        form.adicionar_morador()
+        form.criar_usuario()
+
+        return super().form_valid(form)
     
-    #TODO: def form_valid()
-    #TODO: Criar usuário
+
     
