@@ -29,8 +29,7 @@ class Morador(models.Model):
     celular = models.IntegerField()
     email = models.EmailField()
     sindico = models.BooleanField(verbose_name="É síndico?")
-    usuario_criado = models.BooleanField(editable=False, default=False) #retirar
-
+    
     class Meta:
         verbose_name_plural = "Moradores"
 
