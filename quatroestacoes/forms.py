@@ -1,6 +1,7 @@
-from .models import Morador
+from . import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
+from django import forms
 
 
 class MoradorForm(ModelForm):
@@ -17,7 +18,7 @@ class MoradorForm(ModelForm):
         email = morador.get("email")
         sindico = morador.get("sindico")
 
-        Morador.objects.create(
+        models.Morador.objects.create(
             nome=nome,
             sobrenome=sobrenome,
             bloco=bloco,
@@ -44,7 +45,27 @@ class MoradorForm(ModelForm):
         )
 
     class Meta:
-        model = Morador
+        model = models.Morador
         fields = "__all__"
 
+
+class ReuniaoForm(ModelForm):
+
+    def criar_reuniao(self):
+        reuniao = self.cleaned_data
+
+        data = reuniao.get("data")
+        assunto = reuniao.get("assunto")
+
+        models.Reuniao.objects.create(
+            data=data,
+            assunto=assunto
+        )
+    
+    class Meta:
+        model = models.Reuniao
+        fields = "__all__"
+        widgets = {
+            "data": forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        }
 

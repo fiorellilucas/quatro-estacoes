@@ -1,0 +1,9 @@
+{% if reunioes %}
+    <ul>
+    {% for reuniao in reunioes %}
+        <li>{{ reuniao.data }} - {{ reuniao.assunto }}</li>
+    </ul>
+    {% endfor %}
+{% else %}
+    <p>nenhuma reunião disponível</p>
+{% endif %}
