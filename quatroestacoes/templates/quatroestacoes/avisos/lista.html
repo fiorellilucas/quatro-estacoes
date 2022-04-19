@@ -1,0 +1,13 @@
+{% if avisos %}
+    <ul>
+    {% for aviso in avisos %}
+        <li>
+            {{ aviso.data_postagem }} - {{ aviso.assunto }}<br>
+            {{ aviso.corpo }}<br>
+            {{ aviso.data_evento }}
+        </li>
+    </ul>
+    {% endfor %}
+{% else %}
+    <p>nenhum aviso disponível</p>
+{% endif %}

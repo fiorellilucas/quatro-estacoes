@@ -1,0 +1,13 @@
+{% if reclamacoes %}
+    <ul>
+    {% for reclamacao in reclamacoes %}
+        <li>
+            {{ reclamacao.tipo }}<br>
+            {{ reclamacao.data_postagem }} - {{ reclamacao.assunto }}<br>
+            {{ reclamacao.corpo }}
+        </li>
+    </ul>
+    {% endfor %}
+{% else %}
+    <p>nenhuma reclamação ou sugestão disponível</p>
+{% endif %}

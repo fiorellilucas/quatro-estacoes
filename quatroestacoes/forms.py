@@ -69,3 +69,46 @@ class ReuniaoForm(ModelForm):
             "data": forms.DateTimeInput(attrs={"type": "datetime-local"}),
         }
 
+
+class ReclamacaoForm(ModelForm):
+    
+    def criar_reclamacao(self):
+        reclamacao = self.cleaned_data
+        
+        tipo = reclamacao.get("tipo")
+        assunto = reclamacao.get("assunto")
+        corpo = reclamacao.get("corpo")
+
+        models.Reclamacao.objects.create(
+            tipo=tipo,
+            assunto=assunto,
+            corpo=corpo,
+        )
+
+    class Meta:
+        model = models.Reclamacao
+        fields = "__all__"
+
+
+class AvisoForm(ModelForm):
+
+    def criar_aviso(self):
+        aviso = self.cleaned_data
+
+        assunto = aviso.get("assunto")
+        corpo = aviso.get("corpo")
+        data_evento = aviso.get("data_evento")
+
+        models.Aviso.objects.create(
+            assunto=assunto,
+            corpo=corpo,
+            data_evento=data_evento,
+        )
+
+    class Meta:
+        model = models.Aviso
+        fields = "__all__"
+        widgets = {
+            "data_evento": forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        }
+

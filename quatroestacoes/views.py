@@ -61,3 +61,39 @@ class ReuniaoAddView(FormView):
         form.criar_reuniao()
 
         return super().form_valid(form)
+
+
+class ReclamacaoView(ListView):
+    model = models.Reclamacao
+    context = models.Reclamacao.objects.all()
+    context_object_name = "reclamacoes"
+    template_name = "quatroestacoes/reclamacoes/lista.html"
+
+
+class ReclamacaoAddView(FormView):
+    template_name = "quatroestacoes/reclamacoes/adicionar.html"
+    form_class = forms.ReclamacaoForm
+    success_url = ADMIN_INDEX_URL
+
+    def form_valid(self, form):
+        form.criar_reclamacao()
+        
+        return super().form_valid(form)
+
+
+class AvisoView(ListView):
+    model = models.Aviso
+    context = models.Aviso.objects.all()
+    context_object_name = "avisos"
+    template_name = "quatroestacoes/avisos/lista.html"
+
+
+class AvisoAddView(FormView):
+    template_name = "quatroestacoes/avisos/adicionar.html"
+    form_class = forms.AvisoForm
+    success_url = ADMIN_INDEX_URL
+
+    def form_valid(self, form):
+        form.criar_aviso()
+
+        return super().form_valid(form)
