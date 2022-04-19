@@ -56,8 +56,6 @@ class Aviso(models.Model):
 
 
 class Reclamacao(models.Model):
-    morador = models.ForeignKey(Morador, on_delete=models.CASCADE, verbose_name="ID do morador")
-    
     RECLAMACAO = "reclamacao"
     SUGESTAO = "sugestao"
     opcoes = [
