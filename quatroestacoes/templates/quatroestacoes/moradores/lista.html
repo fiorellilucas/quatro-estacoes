@@ -1,7 +1,7 @@
 {% if moradores %}
     <ul>
     {% for morador in moradores %}
-        <li>{{ morador.nome }} {{ morador.sobrenome }}</li>
+        <a href="{% url 'quatroestacoes:moradores_info' morador.id %}"><li>{{ morador.nome }} {{ morador.sobrenome }}</li></a>
     </ul>
     {% endfor %}
 {% else %}
