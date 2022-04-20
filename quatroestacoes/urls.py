@@ -15,12 +15,15 @@ urlpatterns = [
 
     path("login/", views.LoginView.as_view(), name="login"),  #TODO: Redirecionar todas as páginas para login/ se não estiver logado
     path("admin/", views.AdminView.as_view(), name="admin"),
-    path("admin/moradores", views.MoradorView.as_view(), name="moradores_admin"),
-    path("admin/moradores/adicionar", views.MoradorAddView.as_view(), name="morador_add"),
-    path("admin/reunioes", views.ReuniaoView.as_view(), name="reuniao_admin"),
-    path("admin/reunioes/adicionar", views.ReuniaoAddView.as_view(), name="reuniao_add"),
-    path("admin/reclamacoes", views.ReclamacaoView.as_view(), name="reclamacao_admin"),
-    path("admin/reclamacoes/adicionar", views.ReclamacaoAddView.as_view(), name="reclamacao_add"),
-    path("admin/avisos", views.AvisoView.as_view(), name="aviso_admin"),
-    path("admin/avisos/adicionar", views.AvisoAddView.as_view(), name="aviso_add"),
+    path("admin/moradores", views.MoradoresListaView.as_view(), name="morador_admin"),
+    path("admin/moradores/<int:id_morador>", views.MoradoresInfoView.as_view(), name="moradores_info"),
+    path("admin/moradores/adicionar", views.MoradoresAddView.as_view(), name="morador_add"),
+    path("admin/moradores/<int:pk>/alterar", views.MoradoresUpdView.as_view(), name="moradores_upd"),
+    path("admin/moradores/<int:pk>/deletar", views.MoradoresDelView.as_view(), name="moradores_del"),
+    path("admin/reunioes", views.ReunioesListaView.as_view(), name="reuniao_admin"),
+    path("admin/reunioes/adicionar", views.ReunioesAddView.as_view(), name="reuniao_add"),
+    path("admin/reclamacoes", views.ReclamacoesListaView.as_view(), name="reclamacao_admin"),
+    path("admin/reclamacoes/adicionar", views.ReclamacoesAddView.as_view(), name="reclamacao_add"),
+    path("admin/avisos", views.AvisosListaView.as_view(), name="aviso_admin"),
+    path("admin/avisos/adicionar", views.AvisosAddView.as_view(), name="aviso_add"),
 ]

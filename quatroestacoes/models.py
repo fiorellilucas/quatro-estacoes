@@ -29,7 +29,7 @@ class Morador(models.Model):
     celular = models.IntegerField()
     email = models.EmailField()
     sindico = models.BooleanField(verbose_name="É síndico?")
-    
+
     class Meta:
         verbose_name_plural = "Moradores"
 
@@ -70,6 +70,3 @@ class Reclamacao(models.Model):
     class Meta:
         verbose_name_plural = "Reclamacoes"
 
-
-if __name__ == "__main__":
-    pass
