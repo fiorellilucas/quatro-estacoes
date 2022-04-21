@@ -32,12 +32,12 @@ class IndexView(LoginRequiredMixin, ListView):
     template_name = "quatroestacoes/index.html"
 
 
-class AdminIndexView(TemplateView): 
+class AdminIndexView(LoginRequiredMixin, TemplateView): 
     
     template_name = 'quatroestacoes/admin/index.html'
 
 
-class MoradoresListaView(ListView):    
+class MoradoresListaView(LoginRequiredMixin, ListView):    
     
     model = models.Morador 
     context = models.Morador.objects.all()
@@ -45,7 +45,7 @@ class MoradoresListaView(ListView):
     template_name = "quatroestacoes/moradores/lista.html"
 
 
-class MoradoresInfoView(DetailView):
+class MoradoresInfoView(LoginRequiredMixin, DetailView):
     
     model = models.Morador
 
@@ -56,7 +56,7 @@ class MoradoresInfoView(DetailView):
         return response
 
 
-class MoradoresAddView(CreateView):
+class MoradoresAddView(LoginRequiredMixin, CreateView):
     
     model = models.Morador
     template_name = "quatroestacoes/moradores/adicionar.html"
@@ -69,7 +69,7 @@ class MoradoresAddView(CreateView):
         return super().form_valid(form)
 
 
-class MoradoresUpdView(UpdateView):
+class MoradoresUpdView(LoginRequiredMixin, UpdateView):
 
     model = models.Morador
     fields = "__all__"
@@ -77,7 +77,7 @@ class MoradoresUpdView(UpdateView):
     success_url = ADMIN_INDEX_URL
 
 
-class MoradoresDelView(DeleteView):
+class MoradoresDelView(LoginRequiredMixin, DeleteView):
 
     model = models.Morador
     template_name = "quatroestacoes/moradores/deletar.html"
@@ -92,7 +92,7 @@ class MoradoresDelView(DeleteView):
         return super().post(self, request, *args, **kwargs)
 
 
-class ReunioesListaView(ListView):
+class ReunioesListaView(LoginRequiredMixin, ListView):
     
     model = models.Reuniao
     context = models.Reuniao.objects.all()
@@ -100,7 +100,7 @@ class ReunioesListaView(ListView):
     template_name = "quatroestacoes/reunioes/lista.html"
 
 
-class ReunioesAddView(CreateView):
+class ReunioesAddView(LoginRequiredMixin, CreateView):
     
     model = models.Reuniao
     template_name = "quatroestacoes/reunioes/adicionar.html"
@@ -108,7 +108,7 @@ class ReunioesAddView(CreateView):
     success_url = SUCCESS_INDEX_URL
 
 
-class ReclamacoesListaView(ListView):
+class ReclamacoesListaView(LoginRequiredMixin, ListView):
     
     model = models.Reclamacao
     context = models.Reclamacao.objects.all()
@@ -116,7 +116,7 @@ class ReclamacoesListaView(ListView):
     template_name = "quatroestacoes/reclamacoes/lista.html"
 
 
-class ReclamacoesAddView(CreateView):
+class ReclamacoesAddView(LoginRequiredMixin, CreateView):
     
     model = models.Reclamacao
     template_name = "quatroestacoes/reclamacoes/adicionar.html"
@@ -124,7 +124,7 @@ class ReclamacoesAddView(CreateView):
     success_url = SUCCESS_INDEX_URL
 
 
-class AvisosListaView(ListView):
+class AvisosListaView(LoginRequiredMixin, ListView):
     
     model = models.Aviso
     context = models.Aviso.objects.all()
@@ -132,7 +132,7 @@ class AvisosListaView(ListView):
     template_name = "quatroestacoes/avisos/lista.html"
 
 
-class AvisosAddView(CreateView):
+class AvisosAddView(LoginRequiredMixin, CreateView):
     
     model = models.Aviso
     template_name = "quatroestacoes/avisos/adicionar.html"
