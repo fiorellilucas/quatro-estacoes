@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.views import View
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404
@@ -9,23 +9,28 @@ from . import models, forms
 # quatroestacoes/admin
 ADMIN_INDEX_URL = "/quatroestacoes/admin" 
 
-
-class IndexView(View):
-
-    def get(self, request):
-        return HttpResponse("<h1>Hello, World!</h1>")
+# quatroestacoes/
+SUCCESS_INDEX_URL = "/quatroestacoes/" 
 
 
-class AdminView(TemplateView): 
-    
-    template_name = 'quatroestacoes/admin/index.html'
+class IndexView(ListView):
+
+    model = models.Aviso
+    context = models.Aviso.objects.all()
+    context_object_name = "avisos"
+    template_name = "quatroestacoes/index.html"
 
 
 class LoginView(View):
 
     def get(self, request):
         return HttpResponse("<h1>Página de login</h1>")
-        
+
+
+class AdminIndexView(TemplateView): 
+    
+    template_name = 'quatroestacoes/admin/index.html'
+
 
 class MoradoresListaView(ListView):    
     
@@ -44,7 +49,7 @@ class MoradoresInfoView(DetailView):
         response = render(request, "quatroestacoes/moradores/info.html", {"morador": morador})
 
         return response
-    
+
 
 class MoradoresAddView(CreateView):
     
@@ -80,7 +85,6 @@ class MoradoresDelView(DeleteView):
         usuario.delete()
 
         return super().post(self, request, *args, **kwargs)
-        
 
 
 class ReunioesListaView(ListView):
@@ -96,7 +100,7 @@ class ReunioesAddView(CreateView):
     model = models.Reuniao
     template_name = "quatroestacoes/reunioes/adicionar.html"
     form_class = forms.ReuniaoForm
-    success_url = ADMIN_INDEX_URL
+    success_url = SUCCESS_INDEX_URL
 
 
 class ReclamacoesListaView(ListView):
@@ -112,7 +116,7 @@ class ReclamacoesAddView(CreateView):
     model = models.Reclamacao
     template_name = "quatroestacoes/reclamacoes/adicionar.html"
     form_class = forms.ReclamacaoForm
-    success_url = ADMIN_INDEX_URL
+    success_url = SUCCESS_INDEX_URL
 
 
 class AvisosListaView(ListView):
@@ -128,5 +132,5 @@ class AvisosAddView(CreateView):
     model = models.Aviso
     template_name = "quatroestacoes/avisos/adicionar.html"
     form_class = forms.AvisoForm
-    success_url = ADMIN_INDEX_URL
+    success_url = SUCCESS_INDEX_URL
 

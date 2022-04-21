@@ -1,3 +1,6 @@
+{% extends 'quatroestacoes/base.html' %}
+
+{% block conteudo %}
 {% if reclamacoes %}
     <ul>
     {% for reclamacao in reclamacoes %}
@@ -11,3 +14,4 @@
 {% else %}
     <p>nenhuma reclamação ou sugestão disponível</p>
 {% endif %}
+{% endblock conteudo %}

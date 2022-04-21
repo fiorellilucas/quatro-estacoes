@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="{% static 'quatroestacoes/base/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'quatroestacoes/base/js/functions.js' %}"></script>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a class="logo"><img class="img-logo" src="{% static 'quatroestacoes/base/img/logo.png' %}"/></a>
+        <a href="{% url 'quatroestacoes:index' %}" class="active">HOME</a>
+        <a href="{% url 'quatroestacoes:moradores_lista' %}">MORADORES</a>
+        <a href="#">CALENDÁRIO</a>
+        <div class="dropdown">
+            <button class="dropbtn">OUTROS
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'quatroestacoes:avisos_lista' %}">AVISOS</a>
+                <a href="#">SALÃO DE FESTAS</a>
+                <a href="{% url 'quatroestacoes:reclamacoes_lista' %}">RECLAMAÇÕES OU SUGESTÕES</a>
+            </div>
+        </div>
+
+        <a href="#">SAIR</a>
+
+        <a href="javascript:void(0);" class="icon" onclick="menuResponsivo()">&#9776;</a>
+    </div>
+
+    <div class="container">
+        <div>
+            {% block conteudo %}
+            {% endblock conteudo %}
+        </div>  
+    </div>
+
+</body>
+
+</html>

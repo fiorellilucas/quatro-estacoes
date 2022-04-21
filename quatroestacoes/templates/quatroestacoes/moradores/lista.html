@@ -1,3 +1,7 @@
+{% extends 'quatroestacoes/base.html' %}
+{% comment %} <a href="{% url 'quatroestacoes:morador_add' %}">Adicionar morador</a> {% endcomment %}
+
+{% block conteudo %}
 {% if moradores %}
     <ul>
     {% for morador in moradores %}
@@ -7,3 +11,4 @@
 {% else %}
     <p>nenhum morador disponível</p>
 {% endif %}
+{% endblock %}

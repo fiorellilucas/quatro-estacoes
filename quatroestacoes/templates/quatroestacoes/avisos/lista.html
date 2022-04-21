@@ -1,3 +1,6 @@
+{% extends 'quatroestacoes/base.html' %}
+
+{% block conteudo %}
 {% if avisos %}
     <ul>
     {% for aviso in avisos %}
@@ -6,8 +9,9 @@
             {{ aviso.corpo }}<br>
             {{ aviso.data_evento }}
         </li>
-    </ul>
     {% endfor %}
+    </ul>
 {% else %}
     <p>nenhum aviso disponível</p>
 {% endif %}
+{% endblock conteudo %}

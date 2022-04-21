@@ -1,3 +1,6 @@
+{% extends 'quatroestacoes/base.html' %}
+
+{% block conteudo %}
 {% if morador %}
     <h3>Nome: {{ morador.nome }}<br></h3>
     <h3>Sobrenome: {{ morador.sobrenome }}<br></h3>
@@ -7,7 +10,8 @@
     <h3>Celular: {{ morador.celular }}<br></h3>
     <h3>Email: {{ morador.email }}<br></h3>
 
-    <a href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
+    {% comment %} <a href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a> {% endcomment %}
 {% else %}
     <p>morador indisponível</p>
 {% endif %}
+{% endblock conteudo %}
