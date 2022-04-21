@@ -1,8 +1,8 @@
-from django.http import HttpResponse
-from django.views import View
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from . import models, forms
 
@@ -13,18 +13,23 @@ ADMIN_INDEX_URL = "/quatroestacoes/admin"
 SUCCESS_INDEX_URL = "/quatroestacoes/" 
 
 
-class IndexView(ListView):
+class MyLoginView(LoginView):
+
+    template_name = "quatroestacoes/login.html"
+    next_page = "quatroestacoes:index"
+
+
+class MyLogoutView(LogoutView):
+
+    next_page = "quatroestacoes:login"
+
+
+class IndexView(LoginRequiredMixin, ListView):
 
     model = models.Aviso
     context = models.Aviso.objects.all()
     context_object_name = "avisos"
     template_name = "quatroestacoes/index.html"
-
-
-class LoginView(View):
-
-    def get(self, request):
-        return HttpResponse("<h1>Página de login</h1>")
 
 
 class AdminIndexView(TemplateView): 
