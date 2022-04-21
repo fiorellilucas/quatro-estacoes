@@ -1,7 +1,9 @@
 {% extends 'quatroestacoes/base.html' %}
-{% comment %} <a href="{% url 'quatroestacoes:morador_add' %}">Adicionar morador</a> {% endcomment %}
 
 {% block conteudo %}
+{% if request.user.is_staff %}
+    <a href="{% url 'quatroestacoes:moradores_add' %}">Adicionar morador</a> 
+{% endif %}
 {% if moradores %}
     <ul>
     {% for morador in moradores %}

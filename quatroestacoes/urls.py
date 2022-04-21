@@ -2,30 +2,24 @@ from django.urls import path
 
 from . import views
 
-#TODO: usar template da Samira, user auth, area do morador
-
 app_name = "quatroestacoes"
 urlpatterns = [
-    # USUÁRIO COMUM
+
+    # USUÁRIO COMUM E ADMIN
     path("", views.IndexView.as_view(), name="index"),
+    path("login/", views.MyLoginView.as_view(), name="login"),
+    path("logout/", views.MyLogoutView.as_view(), name="logout"),
     path("moradores/", views.MoradoresListaView.as_view(), name="moradores_lista"),
     path("moradores/<int:id_morador>", views.MoradoresInfoView.as_view(), name="moradores_info"),
     path("avisos/", views.AvisosListaView.as_view(), name="avisos_lista"),
+    path("avisos/adicionar", views.AvisosAddView.as_view(), name="avisos_add"),
     path("reclamacoes/", views.ReclamacoesListaView.as_view(), name="reclamacoes_lista"),
-    path("login/", views.MyLoginView.as_view(), name="login"),  #TODO: Redirecionar todas as páginas para login/ se não estiver logado
-    path("logout/", views.MyLogoutView.as_view(), name="logout"),
+    path("reclamacoes/adicionar", views.ReclamacoesAddView.as_view(), name="reclamacoes_add"),
+    path("reunioes/", views.ReunioesListaView.as_view(), name="reunioes_lista"),
+    path("reunioes/adicionar", views.ReunioesAddView.as_view(), name="reunioes_add"),
     
-    # ADMIN
-    path("admin/", views.AdminIndexView.as_view(), name="index_admin"),
-    path("admin/moradores/", views.MoradoresListaView.as_view(), name="moradores_lista_admin"),
-    path("admin/moradores/<int:id_morador>", views.MoradoresInfoView.as_view(), name="moradores_info_admin"),
-    path("admin/moradores/adicionar/", views.MoradoresAddView.as_view(), name="moradores_add"),
-    path("admin/moradores/<int:pk>/alterar", views.MoradoresUpdView.as_view(), name="moradores_upd"),
-    path("admin/moradores/<int:pk>/deletar", views.MoradoresDelView.as_view(), name="moradores_del"),
-    path("admin/reunioes/", views.ReunioesListaView.as_view(), name="reunioes_lista_admin"),
-    path("admin/reunioes/adicionar", views.ReunioesAddView.as_view(), name="reunioes_add"),
-    path("admin/reclamacoes/", views.ReclamacoesListaView.as_view(), name="reclamacoes_lista_admin"),
-    path("admin/reclamacoes/adicionar", views.ReclamacoesAddView.as_view(), name="reclamacoes_add"),
-    path("admin/avisos/", views.AvisosListaView.as_view(), name="avisos_lista_admin"),
-    path("admin/avisos/adicionar", views.AvisosAddView.as_view(), name="avisos_add"),
+    # EXCLUSIVAMENTE ADMIN
+    path("moradores/adicionar/", views.MoradoresAddView.as_view(), name="moradores_add"),
+    path("moradores/<int:pk>/alterar", views.MoradoresUpdView.as_view(), name="moradores_upd"),
+    path("moradores/<int:pk>/deletar", views.MoradoresDelView.as_view(), name="moradores_del"),
 ]

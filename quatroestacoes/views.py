@@ -2,12 +2,9 @@ from django.views.generic import ListView, TemplateView, DetailView, CreateView,
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from . import models, forms
-
-# quatroestacoes/admin
-ADMIN_INDEX_URL = "/quatroestacoes/admin" 
 
 # quatroestacoes/
 SUCCESS_INDEX_URL = "/quatroestacoes/" 
@@ -54,14 +51,19 @@ class MoradoresInfoView(LoginRequiredMixin, DetailView):
         response = render(request, "quatroestacoes/moradores/info.html", {"morador": morador})
 
         return response
+        
 
-
-class MoradoresAddView(LoginRequiredMixin, CreateView):
+class MoradoresAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     
     model = models.Morador
     template_name = "quatroestacoes/moradores/adicionar.html"
     form_class = forms.MoradorForm
-    success_url = ADMIN_INDEX_URL
+    success_url = SUCCESS_INDEX_URL
+
+    redirect_field_name = None
+
+    def test_func(self):
+        return self.request.user.is_staff
 
     def form_valid(self, form):
         form.criar_usuario()
@@ -69,19 +71,31 @@ class MoradoresAddView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class MoradoresUpdView(LoginRequiredMixin, UpdateView):
+class MoradoresUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     model = models.Morador
     fields = "__all__"
     template_name = "quatroestacoes/moradores/alterar.html"
-    success_url = ADMIN_INDEX_URL
+    success_url = SUCCESS_INDEX_URL
+
+    login_url = "quatroestacoes:index"
+    redirect_field_name = None
+
+    def test_func(self):
+        return self.request.user.is_staff
 
 
-class MoradoresDelView(LoginRequiredMixin, DeleteView):
+class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     model = models.Morador
     template_name = "quatroestacoes/moradores/deletar.html"
-    success_url = ADMIN_INDEX_URL
+    success_url = SUCCESS_INDEX_URL
+
+    login_url = "quatroestacoes:index"
+    redirect_field_name = None
+
+    def test_func(self):
+        return self.request.user.is_staff
 
     def post(self, request, *args, **kwargs):
         morador = models.Morador.objects.get(pk=kwargs.get("pk"))

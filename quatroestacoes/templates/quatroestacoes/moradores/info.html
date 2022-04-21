@@ -10,7 +10,9 @@
     <h3>Celular: {{ morador.celular }}<br></h3>
     <h3>Email: {{ morador.email }}<br></h3>
 
-    {% comment %} <a href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a> {% endcomment %}
+    {% if request.user.is_staff %}
+        <a href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
+    {% endif %}
 {% else %}
     <p>morador indisponível</p>
 {% endif %}
