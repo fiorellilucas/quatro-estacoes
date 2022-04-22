@@ -106,6 +106,11 @@ class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return super().post(self, request, *args, **kwargs)
 
 
+class CalendarioView(LoginRequiredMixin, TemplateView):
+
+    template_name = "quatroestacoes/calendario.html"
+
+
 class ReunioesListaView(LoginRequiredMixin, ListView):
     
     model = models.Reuniao

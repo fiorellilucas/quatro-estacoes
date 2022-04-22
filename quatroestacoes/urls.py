@@ -11,6 +11,7 @@ urlpatterns = [
     path("logout/", views.MyLogoutView.as_view(), name="logout"),
     path("moradores/", views.MoradoresListaView.as_view(), name="moradores_lista"),
     path("moradores/<int:id_morador>", views.MoradoresInfoView.as_view(), name="moradores_info"),
+    path("calendario", views.CalendarioView.as_view(), name="calendario"),
     path("avisos/", views.AvisosListaView.as_view(), name="avisos_lista"),
     path("avisos/adicionar", views.AvisosAddView.as_view(), name="avisos_add"),
     path("reclamacoes/", views.ReclamacoesListaView.as_view(), name="reclamacoes_lista"),
