@@ -1,4 +1,10 @@
+{% extends 'quatroestacoes/base.html' %}
+
+{% block active_reclamacoes %}active{% endblock active_reclamacoes %}
+
+{% block conteudo %}
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Enviar reclamação/sugestão">
 </form>
+{% endblock conteudo %}

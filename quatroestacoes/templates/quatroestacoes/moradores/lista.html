@@ -1,5 +1,7 @@
 {% extends 'quatroestacoes/base.html' %}
 
+{% block active_moradores %}active{% endblock active_moradores %}
+
 {% block conteudo %}
 {% if request.user.is_staff %}
     <a href="{% url 'quatroestacoes:moradores_add' %}">Adicionar morador</a> 

@@ -1,5 +1,7 @@
 {% extends 'quatroestacoes/base.html' %}
 
+{% block active_moradores %}active{% endblock active_moradores %}
+
 {% block conteudo %}
 {% if morador %}
     <h3>Nome: {{ morador.nome }}<br></h3>
