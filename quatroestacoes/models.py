@@ -28,7 +28,6 @@ class Morador(models.Model):
     interfone = models.IntegerField()
     celular = models.IntegerField()
     email = models.EmailField()
-    sindico = models.BooleanField(verbose_name="É síndico?")
 
     class Meta:
         verbose_name_plural = "Moradores"
