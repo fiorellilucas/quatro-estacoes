@@ -87,11 +87,13 @@ class Morador(AbstractUser):
 
 
 class Reserva(models.Model):
+    
     morador = models.ForeignKey(Morador, on_delete=models.CASCADE, verbose_name="ID do morador")
     data = models.DateField()
 
 
 class Reuniao(models.Model):
+    
     data = models.DateTimeField(verbose_name="Data e horário da reunião")
     assunto = models.CharField(max_length=300)
 
@@ -100,6 +102,7 @@ class Reuniao(models.Model):
 
 
 class Aviso(models.Model):
+    
     assunto = models.CharField(max_length=300)
     corpo = models.TextField()
     data_postagem = models.DateTimeField(auto_now_add=True)
@@ -107,6 +110,7 @@ class Aviso(models.Model):
 
 
 class Reclamacao(models.Model):
+    
     RECLAMACAO = "reclamacao"
     SUGESTAO = "sugestao"
     opcoes = [

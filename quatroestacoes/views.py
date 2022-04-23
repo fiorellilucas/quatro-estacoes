@@ -144,3 +144,23 @@ class AvisosAddView(LoginRequiredMixin, CreateView):
     form_class = forms.AvisoForm
     success_url = SUCCESS_INDEX_URL
 
+
+class ReservasListaView(LoginRequiredMixin, ListView):
+
+    model = models.Reserva
+    context = models.Reserva.objects.all()
+    context_object_name = "reservas"
+    template_name = "quatroestacoes/reservas/lista.html"
+    
+
+class ReservasAddView(LoginRequiredMixin, CreateView):
+
+    model = models.Reserva
+    template_name = "quatroestacoes/reservas/adicionar.html"
+    form_class = forms.ReservaForm
+    success_url = SUCCESS_INDEX_URL
+
+    def form_valid(self, form):
+        form.instance.morador = self.request.user
+        return super().form_valid(form)
+

@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, modelform_factory
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
@@ -50,5 +50,15 @@ class AvisoForm(ModelForm):
         fields = "__all__"
         widgets = {
             "data_evento": forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        }
+
+
+class ReservaForm(ModelForm):
+
+    class Meta:
+        model = models.Reserva
+        fields = ["data"]
+        widgets = {
+            "data": forms.DateInput(attrs={"type": "date"}),
         }
 

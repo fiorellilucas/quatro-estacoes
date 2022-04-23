@@ -18,6 +18,8 @@ urlpatterns = [
     path("reclamacoes/adicionar", views.ReclamacoesAddView.as_view(), name="reclamacoes_add"),
     path("reunioes/", views.ReunioesListaView.as_view(), name="reunioes_lista"),
     path("reunioes/adicionar", views.ReunioesAddView.as_view(), name="reunioes_add"),
+    path("reservas/", views.ReservasListaView.as_view(), name="reservas_lista"),
+    path("reservas/adicionar", views.ReservasAddView.as_view(), name="reservas_add"),
     
     # EXCLUSIVAMENTE ADMIN
     path("moradores/adicionar/", views.MoradoresAddView.as_view(), name="moradores_add"),

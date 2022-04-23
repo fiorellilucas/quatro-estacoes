@@ -1,0 +1,11 @@
+{% extends 'quatroestacoes/base.html' %}
+
+{% block conteudo %}
+    {% if reservas %}
+        {% for reserva in reservas %}
+            <li>{{ reserva.data }} - {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</li>
+        {% endfor %}
+    {% else %}
+        nenhuma reserva disponível
+    {% endif %}
+{% endblock conteudo %}
