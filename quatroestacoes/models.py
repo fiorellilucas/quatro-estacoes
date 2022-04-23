@@ -1,10 +1,56 @@
 from django.db import models
+from django.contrib.auth.models import User, AbstractUser, BaseUserManager
 
 
-class Morador(models.Model):
-    nome = models.CharField(max_length=50)
-    sobrenome = models.CharField(max_length=50)
+class MoradorManager(BaseUserManager):
+    
+    def create_user(self, email, password, bloco, apartamento, interfone, celular, **extra_fields):
+        
+        if not email:
+            raise ValueError("O email não pode ficar em branco")
+        if not bloco:
+            raise ValueError("O bloco não pode ficar em branco")
+        if not apartamento:
+            raise ValueError("O apartamento não pode ficar em branco")
+        if not interfone:
+            raise ValueError("O interfone não pode ficar em branco")
+        if not celular:
+            raise ValueError("O celular não pode ficar em branco")
 
+        usuario = self.model(
+            email = self.normalize_email(email),
+            password = password,
+            bloco = bloco,
+            apartamento = apartamento,
+            interfone = interfone, 
+            celular = celular, 
+            **extra_fields
+        )
+        usuario.set_password(password)
+        usuario.save(using=self._db)
+        return usuario
+
+    def create_superuser(self, email, password, bloco, apartamento, interfone, celular, **extra_fields):
+
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
+
+        usuario = self.create_user(
+            email = self.normalize_email(email),
+            password = password,
+            bloco = bloco,
+            apartamento = apartamento,
+            interfone = interfone, 
+            celular = celular,
+            **extra_fields
+        )
+        return usuario
+        
+
+class Morador(AbstractUser):
+
+    username = None
+    email = models.EmailField(unique=True)
     opcoes_bloco = [
         ("A", "A"),
         ("B", "B"),
@@ -27,7 +73,14 @@ class Morador(models.Model):
     
     interfone = models.IntegerField()
     celular = models.IntegerField()
-    email = models.EmailField()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ["password", "bloco", "apartamento", "interfone", "celular"]
+
+    objects = MoradorManager()
+
+    def __str__(self):
+        return self.email
 
     class Meta:
         verbose_name_plural = "Moradores"

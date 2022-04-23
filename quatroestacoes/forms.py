@@ -1,30 +1,29 @@
 from django.forms import ModelForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
 
 from . import models
 
-class MoradorForm(ModelForm):
-
-    def criar_usuario(self):
-        morador = self.cleaned_data
-
-        nome = morador.get("nome")
-        sobrenome = morador.get("sobrenome")
-        username = f"{nome.lower().split()[0]}{sobrenome.lower().split()[0]}"
-        email = morador.get("email")
-
-        User.objects.create_user(
-            username=username,
-            password="123abc",
-            email=email,
-            first_name=nome,
-            last_name=sobrenome,
-        )
+class MoradorCreationForm(UserCreationForm):
 
     class Meta:
         model = models.Morador
-        fields = "__all__"
+        fields = ["email", "first_name", "last_name", "bloco", "apartamento", "interfone", "celular"]
+        labels = {
+            "first_name": "Nome",
+            "last_name": "Sobrenome"
+        }
+
+
+class MoradorChangeForm(ModelForm):
+
+    class Meta:
+        model = models.Morador
+        fields = ["email","first_name", "last_name", "bloco", "apartamento", "interfone", "celular"]
+        labels = {
+            "first_name": "Nome",
+            "last_name": "Sobrenome"
+        }
 
 
 class ReuniaoForm(ModelForm):

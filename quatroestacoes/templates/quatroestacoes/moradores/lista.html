@@ -9,9 +9,11 @@
 {% if moradores %}
     <ul>
     {% for morador in moradores %}
-        <a href="{% url 'quatroestacoes:moradores_info' morador.id %}"><li>{{ morador.nome }} {{ morador.sobrenome }}</li></a>
-    </ul>
+        {% if not morador.is_staff %}
+            <li><a href="{% url 'quatroestacoes:moradores_info' morador.id %}">{{ morador.first_name }} {{ morador.last_name }}</a></li>
+        {% endif %}
     {% endfor %}
+    </ul>
 {% else %}
     <p>nenhum morador disponível</p>
 {% endif %}

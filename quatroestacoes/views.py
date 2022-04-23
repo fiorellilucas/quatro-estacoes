@@ -57,7 +57,7 @@ class MoradoresAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     
     model = models.Morador
     template_name = "quatroestacoes/moradores/adicionar.html"
-    form_class = forms.MoradorForm
+    form_class = forms.MoradorCreationForm
     success_url = SUCCESS_INDEX_URL
 
     redirect_field_name = None
@@ -65,17 +65,12 @@ class MoradoresAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     def test_func(self):
         return self.request.user.is_staff
 
-    def form_valid(self, form):
-        form.criar_usuario()
-
-        return super().form_valid(form)
-
 
 class MoradoresUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     model = models.Morador
-    fields = "__all__"
     template_name = "quatroestacoes/moradores/alterar.html"
+    form_class = forms.MoradorChangeForm
     success_url = SUCCESS_INDEX_URL
 
     login_url = "quatroestacoes:index"
@@ -97,13 +92,6 @@ class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         return self.request.user.is_staff
 
-    def post(self, request, *args, **kwargs):
-        morador = models.Morador.objects.get(pk=kwargs.get("pk"))
-        username_morador = f"{morador.nome.lower().split()[0]}{morador.sobrenome.lower().split()[0]}"
-        usuario = get_object_or_404(User, username=username_morador)
-        usuario.delete()
-
-        return super().post(self, request, *args, **kwargs)
 
 
 class CalendarioView(LoginRequiredMixin, TemplateView):
