@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
 class MoradorManager(BaseUserManager):

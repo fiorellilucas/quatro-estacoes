@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 html {
-    height:100%;
-  }
+    height: 100%;
+}
 
 body {
     margin: 0;
@@ -16,6 +16,10 @@ body {
     user-select: none;
     margin: 0;
     padding: 0;
+}
+
+img {
+    pointer-events: none;
 }
 
 .img-logo {
@@ -36,19 +40,24 @@ body {
 
 .topnav a {
     float: left;
-    display: block;
+    display: inline;
     color: #000000;
     letter-spacing: 0.2em;
-    line-height: 4em;
+    line-height: 5em;
     font-weight: bold;
     text-align: center;
     margin: 0 1em;
-    padding: 0.3em 0.5em;
+    padding: 0.3em 0.5em 0.05em;
     text-decoration: none;
     font-size: 14px;
 }
 
 .active {
+    border-bottom: 0.2em solid #694C00;
+    border-spacing: 0.5em;
+}
+
+#active {
     border-bottom: 0.2em solid #694C00;
     border-spacing: 0.5em;
 }
@@ -59,6 +68,7 @@ body {
 
 .topnav .icon {
     display: none;
+    margin: 0 0 15px;
 }
 
 .dropdown {
@@ -73,13 +83,13 @@ body {
     outline: none;
     color: #000000;
     letter-spacing: 0.2em;
-    line-height: 4em;
+    line-height: 5em;
     font-weight: inherit;
     margin: 0 1em;
     padding: 0.3em 0.5em;
     background-color: inherit;
     font-family: inherit;
-} 
+}
 
 .dropdown-content {
     display: none;
@@ -93,8 +103,8 @@ body {
 .dropdown-content a {
     float: none;
     color: black;
-    margin: 0 1em;
-    padding: 0.3em 0.2em;
+    margin: 0;
+    padding: 0.3em 0.5em 0.05em;
     text-decoration: none;
     display: block;
     text-align: left;
@@ -145,17 +155,25 @@ h3 {
     width: 30%;
 }
 
-.linha-vertical {
-    border-right: 0.15em solid #694C00;
-    height: 100%;
+.container-usuario {
+    display: flex;
+    justify-content: end;
 }
 
-.linha-horizontal {
-    border-right: 10em solid #694C00;
-    width: 100%;
-    display: none;
+.container-usuario p {
+    font-size: 0.75em;
+    line-height: 1em;
+    margin: 1em 1.25em 0 2.5em;
 }
 
+.info-nome {
+    font-weight: bold;
+}
+
+.icon-usuario {
+    margin-top: auto;
+    margin-bottom: auto;
+}
 
 @media screen and (max-width: 730px) {
 
@@ -198,6 +216,18 @@ h3 {
         width: 100%;
         text-align: left;
     }
+
+    .img-logo {
+        height: 45px;
+        object-fit: cover;
+    }
+
+    .container-usuario p {
+        font-size: 0.75em;
+        line-height: 1em;
+        margin: 1em 1.25em 0 0;
+    }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -217,6 +247,14 @@ h3 {
         width: 100%;
         padding: 2em 0em;
         margin: 2em 0;
+    }
+
+    .info-usuario {
+        margin: 0  0 0 1.25em;
+    }
+
+    .img-logo {
+        margin-top: 1em;
     }
 
 }

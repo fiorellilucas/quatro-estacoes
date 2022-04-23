@@ -17,6 +17,7 @@
 <body>
     <div class="topnav" id="myTopnav">
         <a class="logo"><img class="img-logo" src="{% static 'quatroestacoes/base/img/logo.png' %}"/></a>
+        <a href="javascript:void(0);" class="icon" onclick="menuResponsivo()">&#9776;</a>
         <a href="{% url 'quatroestacoes:index' %}" class="{% block active_home %}{% endblock active_home %}">HOME</a>
         <a href="{% url 'quatroestacoes:moradores_lista' %}" class="{% block active_moradores %}{% endblock active_moradores %}">MORADORES</a>
         <a href="{% url 'quatroestacoes:calendario' %}" class="{% block active_calendario %}{% endblock active_calendario %}">CALENDÁRIO</a>
@@ -31,9 +32,18 @@
             </div>
         </div>
 
-        <a href="{% url 'quatroestacoes:logout' %}">SAIR</a>
-
-        <a href="javascript:void(0);" class="icon" onclick="menuResponsivo()">&#9776;</a>
+        <div class="container-usuario">
+            <a href="{% url 'quatroestacoes:logout' %}">SAIR</a>
+            <div class="info-usuario">
+                <p class="info-nome">{{ request.user.first_name|upper }} {{ request.user.last_name|upper }}</p>
+                <p class="info-bloco">BLOCO {{ request.user.bloco }}</p>
+                <p class="info-apartamento">APTO {{ request.user.apartamento }}</p>
+            </div>
+            <div class="icon-usuario">
+                <img src="{% static 'quatroestacoes/base/img/icon-person.svg' %}">
+            </div>
+        </div>
+        
     </div>
 
     <div class="container">

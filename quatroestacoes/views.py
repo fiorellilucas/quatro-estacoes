@@ -1,6 +1,5 @@
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.models import User
+from django.shortcuts import render
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -91,7 +90,6 @@ class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.is_staff
-
 
 
 class CalendarioView(LoginRequiredMixin, TemplateView):
