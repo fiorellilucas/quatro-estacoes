@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titulo %}{% endblock titulo %}</title>
     <link rel="stylesheet" href="{% static 'quatroestacoes/base/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'quatroestacoes/calendario/css/calendario.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="{% static 'quatroestacoes/base/img/favicon.png' %}">
     <script src="{% static 'quatroestacoes/base/js/functions.js' %}"></script>
@@ -49,7 +50,6 @@
     <div class="container">
         <div>
             {% block conteudo %}
-            {{ object_list }}
             {% endblock conteudo %}
         </div>  
     </div>
