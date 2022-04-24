@@ -28,11 +28,6 @@ class IndexView(LoginRequiredMixin, ListView):
     template_name = "quatroestacoes/index.html"
 
 
-class AdminIndexView(LoginRequiredMixin, TemplateView): 
-    
-    template_name = 'quatroestacoes/admin/index.html'
-
-
 class MoradoresListaView(LoginRequiredMixin, ListView):    
     
     model = models.Morador 

@@ -1,11 +1,17 @@
 {% extends 'quatroestacoes/base.html' %}
 
+{% block active_salao %}active{% endblock active_salao %}
+{% block titulo %}Reservas{% endblock titulo %}
+
 {% block conteudo %}
-    {% if reservas %}
-        {% for reserva in reservas %}
-            <li>{{ reserva.data }} - {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</li>
-        {% endfor %}
-    {% else %}
-        nenhuma reserva disponível
-    {% endif %}
+<a href="{% url 'quatroestacoes:reservas_add' %}">Reservar salão de festas</a>
+{% if reservas %}
+    <ul>
+    {% for reserva in reservas %}
+        <li>{{ reserva.data }} - {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    nenhuma reserva disponível
+{% endif %}
 {% endblock conteudo %}
