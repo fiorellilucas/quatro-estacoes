@@ -4,8 +4,15 @@
 {% block titulo %}Alterar morador{% endblock titulo %}
 
 {% block conteudo %}
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Alterar informações">
-</form>
+<div class="container-div-form-morador">
+    <div class="container-form-morador">    
+        <form method="post">{% csrf_token %}
+            <h3>ALTERAR MORADOR</h3>
+            <span>{{ form.as_p }}</span>
+            <div class="container-alterar-morador">
+                <input type="submit" value="Alterar informações">
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock conteudo %}

@@ -79,6 +79,7 @@ class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = models.Morador
     template_name = "quatroestacoes/moradores/deletar.html"
     success_url = SUCCESS_INDEX_URL
+    context_object_name = "morador"
 
     login_url = "quatroestacoes:index"
     redirect_field_name = None

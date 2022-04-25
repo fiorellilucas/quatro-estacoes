@@ -4,18 +4,61 @@
 {% block titulo %}Moradores{% endblock titulo %}
 
 {% block conteudo %}
-{% if request.user.is_staff %}
-    <a href="{% url 'quatroestacoes:moradores_add' %}">Adicionar morador</a> 
-{% endif %}
-{% if moradores %}
-    <ul>
-    {% for morador in moradores %}
-        {% if not morador.is_staff %}
-            <li><a href="{% url 'quatroestacoes:moradores_info' morador.id %}">{{ morador.first_name }} {{ morador.last_name }}</a></li>
+<div class="container-lista-morador">
+    <div class="container-adicionar-morador">
+        {% if request.user.is_staff %}
+            <a href="{% url 'quatroestacoes:moradores_add' %}">Adicionar morador</a> 
         {% endif %}
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>nenhum morador disponível</p>
-{% endif %}
+    </div>
+    <div class="container-moradores">
+        {% if moradores %}
+            <div class="container-bloco-a container-bloco">
+                <h3>BLOCO A</h3>
+                {% for morador in moradores %}
+                    {% if not morador.is_staff %}
+                        {% if morador.bloco == "A" %}
+                            <p><a href="{% url 'quatroestacoes:moradores_info' morador.id %}">{{ morador.first_name }} {{ morador.last_name }}</a></p>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="container-bloco-b container-bloco">
+            <h3>BLOCO B</h3>
+            {% for morador in moradores %}
+                {% if not morador.is_staff %}
+                    {% if morador.bloco == "B" %}
+                        <p><a href="{% url 'quatroestacoes:moradores_info' morador.id %}">{{ morador.first_name }} {{ morador.last_name }}</a></p>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            </div>
+            
+            <div class="container-bloco-c container-bloco">
+            <h3>BLOCO C</h3>
+            {% for morador in moradores %}
+                {% if not morador.is_staff %}
+                    {% if morador.bloco == "C" %}
+                        <p><a href="{% url 'quatroestacoes:moradores_info' morador.id %}">{{ morador.first_name }} {{ morador.last_name }}</a></p>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            </div>
+            
+            <div class="container-bloco-d container-bloco">
+            <h3>BLOCO D</h3>
+            {% for morador in moradores %}
+                {% if not morador.is_staff %}
+                    {% if morador.bloco == "D" %}
+                        <p><a href="{% url 'quatroestacoes:moradores_info' morador.id %}">{{ morador.first_name }} {{ morador.last_name }}</a></p>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% else %}
+        <p>nenhum morador disponível</p>
+        {% endif %}
+    </div>
+</div>
+
 {% endblock %}

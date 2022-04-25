@@ -4,6 +4,7 @@
 {% block titulo %}Reclamações{% endblock titulo %}
 
 {% block conteudo %}
+<a href="{% url 'quatroestacoes:reclamacoes_add' %}">Criar reclamação</a>
 {% if reclamacoes %}
     <ul>
     {% for reclamacao in reclamacoes %}

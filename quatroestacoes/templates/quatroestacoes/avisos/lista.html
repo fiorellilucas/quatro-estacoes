@@ -4,6 +4,7 @@
 {% block titulo %}Avisos{% endblock titulo %}
 
 {% block conteudo %}
+<a href="{% url 'quatroestacoes:avisos_add' %}">Criar aviso</a>
 {% if avisos %}
     <ul>
     {% for aviso in avisos %}

@@ -1,4 +1,4 @@
-from django.forms import ModelForm, modelform_factory
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
@@ -6,6 +6,19 @@ from . import models
 
 class MoradorCreationForm(UserCreationForm):
 
+    password1 = forms.CharField(
+        label="Senha",
+        strip=False,
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+        help_text="",
+    )
+    password2 = forms.CharField(
+        label="Confirme sua senha",
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+        strip=False,
+        help_text="",
+    )
+    
     class Meta:
         model = models.Morador
         fields = ["email", "first_name", "last_name", "bloco", "apartamento", "interfone", "celular"]
@@ -13,6 +26,7 @@ class MoradorCreationForm(UserCreationForm):
             "first_name": "Nome",
             "last_name": "Sobrenome"
         }
+
 
 
 class MoradorChangeForm(ModelForm):

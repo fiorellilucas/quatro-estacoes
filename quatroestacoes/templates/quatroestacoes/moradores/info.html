@@ -5,17 +5,24 @@
 
 {% block conteudo %}
 {% if morador %}
-    <h3>Nome: {{ morador.first_name }}<br></h3>
-    <h3>Sobrenome: {{ morador.last_name }}<br></h3>
-    <h3>Bloco: {{ morador.bloco }}<br></h3>
-    <h3>Apartamento: {{ morador.apartamento }}<br></h3>
-    <h3>Interfone: {{ morador.interfone }}<br></h3>
-    <h3>Celular: {{ morador.celular }}<br></h3>
-    <h3>Email: {{ morador.email }}<br></h3>
+    <div class="container-div-morador">
+        <div class="container-info-usuario">
+            <h3>INFORMAÇÕES DO MORADOR</h3>
+            <p><span>Nome:</span> {{ morador.first_name }}<br></p>
+            <p><span>Sobrenome:</span> {{ morador.last_name }}<br></p>
+            <p><span>Bloco:</span> {{ morador.bloco }}<br></h3>
+            <p><span>Apartamento:</span> {{ morador.apartamento }}<br></p>
+            <p><span>Interfone:</span> {{ morador.interfone }}<br></p>
+            <p><span>Celular:</span> {{ morador.celular }}<br></p>
+            <p><span>Email:</span> {{ morador.email }}<br></p>
+        </div>
 
-    {% if request.user.is_staff %}
-        <a href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
-    {% endif %}
+        <div class="container-alterar-morador">
+            {% if request.user.is_staff %}
+                <a href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
+            {% endif %}
+        </div>
+    </div>
 {% else %}
     <p>morador indisponível</p>
 {% endif %}
