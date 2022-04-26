@@ -4,14 +4,20 @@
 {% block titulo %}Reservas{% endblock titulo %}
 
 {% block conteudo %}
-<a href="{% url 'quatroestacoes:reservas_add' %}">Reservar salão de festas</a>
-{% if reservas %}
-    <ul>
-    {% for reserva in reservas %}
-        <li>{{ reserva.data }} - {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    nenhuma reserva disponível
-{% endif %}
+<div class="container-reclamacoes">
+    <div class="container-adicionar-morador">
+        <a href="{% url 'quatroestacoes:reservas_add' %}">Reservar salão de festas</a>
+    </div>
+    <div class="container-info-usuario">
+        {% if reservas %}
+            <ul style="padding: 0;">
+            {% for reserva in reservas %}
+                <li style="border-bottom: 1px solid #694C00;">{{ reserva.data }} - {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</li><br>
+            {% endfor %}
+            </ul>
+        {% else %}
+            nenhuma reserva disponível
+        {% endif %}
+    </div>
+</div>
 {% endblock conteudo %}

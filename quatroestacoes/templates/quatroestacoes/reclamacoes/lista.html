@@ -4,18 +4,24 @@
 {% block titulo %}Reclamações{% endblock titulo %}
 
 {% block conteudo %}
-<a href="{% url 'quatroestacoes:reclamacoes_add' %}">Criar reclamação</a>
-{% if reclamacoes %}
-    <ul>
-    {% for reclamacao in reclamacoes %}
-        <li>
-            {{ reclamacao.tipo }}<br>
-            {{ reclamacao.data_postagem }} - {{ reclamacao.assunto }}<br>
-            {{ reclamacao.corpo }}
-        </li>
-    </ul>
-    {% endfor %}
-{% else %}
-    <p>nenhuma reclamação ou sugestão disponível</p>
-{% endif %}
+<div class="container-reclamacoes">
+    <div class="container-adicionar-morador">
+        <a href="{% url 'quatroestacoes:reclamacoes_add' %}">Criar reclamação</a>
+    </div>
+    <div class="container-info-usuario">
+        {% if reclamacoes %}
+            <ul style="padding: 0;">
+            {% for reclamacao in reclamacoes %}
+                <li style="border-bottom: 1px solid #694C00;">
+                    {{ reclamacao.tipo }}<br>
+                    {{ reclamacao.data_postagem }} - {{ reclamacao.assunto }}<br>
+                    {{ reclamacao.corpo }}
+                </li>
+            </ul>
+            {% endfor %}
+        {% else %}
+            <p>nenhuma reclamação ou sugestão disponível</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock conteudo %}

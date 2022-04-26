@@ -325,6 +325,10 @@ span {
     max-width: 600px;
 }
 
+.container-avisos, .container-reclamacoes, .container-reservas {
+    display: flex;
+    flex-direction: column;
+}
 
 @media screen and (max-width: 730px) {
 
