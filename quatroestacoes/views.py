@@ -5,8 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from . import models, forms
 
-# quatroestacoes/
-SUCCESS_INDEX_URL = "/quatroestacoes/" 
+SUCCESS_INDEX_URL = "/" 
 
 
 class MyLoginView(LoginView):
