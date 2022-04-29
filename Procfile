@@ -1,1 +1,1 @@
-web: gunicorn quatroestacoes.wsgi
+web: gunicorn mysite.wsgi
