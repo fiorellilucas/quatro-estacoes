@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from . import models, forms
 
-SUCCESS_INDEX_URL = "/" 
+SUCCESS_INDEX_URL = "/"
 
 
 class MyLoginView(LoginView):
@@ -27,27 +27,28 @@ class IndexView(LoginRequiredMixin, ListView):
     template_name = "quatroestacoes/index.html"
 
 
-class MoradoresListaView(LoginRequiredMixin, ListView):    
-    
-    model = models.Morador 
+class MoradoresListaView(LoginRequiredMixin, ListView):
+
+    model = models.Morador
     context = models.Morador.objects.all()
     context_object_name = "moradores"
     template_name = "quatroestacoes/moradores/lista.html"
 
 
 class MoradoresInfoView(LoginRequiredMixin, DetailView):
-    
+
     model = models.Morador
 
     def get(self, request, id_morador):
         morador = models.Morador.objects.get(pk=id_morador)
-        response = render(request, "quatroestacoes/moradores/info.html", {"morador": morador})
+        response = render(
+            request, "quatroestacoes/moradores/info.html", {"morador": morador})
 
         return response
-        
+
 
 class MoradoresAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
-    
+
     model = models.Morador
     template_name = "quatroestacoes/moradores/adicionar.html"
     form_class = forms.MoradorCreationForm
@@ -93,7 +94,7 @@ class CalendarioView(LoginRequiredMixin, TemplateView):
 
 
 class ReunioesListaView(LoginRequiredMixin, ListView):
-    
+
     model = models.Reuniao
     context = models.Reuniao.objects.all()
     context_object_name = "reunioes"
@@ -101,7 +102,7 @@ class ReunioesListaView(LoginRequiredMixin, ListView):
 
 
 class ReunioesAddView(LoginRequiredMixin, CreateView):
-    
+
     model = models.Reuniao
     template_name = "quatroestacoes/reunioes/adicionar.html"
     form_class = forms.ReuniaoForm
@@ -109,7 +110,7 @@ class ReunioesAddView(LoginRequiredMixin, CreateView):
 
 
 class ReclamacoesListaView(LoginRequiredMixin, ListView):
-    
+
     model = models.Reclamacao
     context = models.Reclamacao.objects.all()
     context_object_name = "reclamacoes"
@@ -117,7 +118,7 @@ class ReclamacoesListaView(LoginRequiredMixin, ListView):
 
 
 class ReclamacoesAddView(LoginRequiredMixin, CreateView):
-    
+
     model = models.Reclamacao
     template_name = "quatroestacoes/reclamacoes/adicionar.html"
     form_class = forms.ReclamacaoForm
@@ -125,7 +126,7 @@ class ReclamacoesAddView(LoginRequiredMixin, CreateView):
 
 
 class AvisosListaView(LoginRequiredMixin, ListView):
-    
+
     model = models.Aviso
     context = models.Aviso.objects.all()
     context_object_name = "avisos"
@@ -133,7 +134,7 @@ class AvisosListaView(LoginRequiredMixin, ListView):
 
 
 class AvisosAddView(LoginRequiredMixin, CreateView):
-    
+
     model = models.Aviso
     template_name = "quatroestacoes/avisos/adicionar.html"
     form_class = forms.AvisoForm
@@ -146,7 +147,7 @@ class ReservasListaView(LoginRequiredMixin, ListView):
     context = models.Reserva.objects.all()
     context_object_name = "reservas"
     template_name = "quatroestacoes/reservas/lista.html"
-    
+
 
 class ReservasAddView(LoginRequiredMixin, CreateView):
 
@@ -158,4 +159,3 @@ class ReservasAddView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.morador = self.request.user
         return super().form_valid(form)
-

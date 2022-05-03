@@ -3,9 +3,9 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
 class MoradorManager(BaseUserManager):
-    
+
     def create_user(self, email, password, bloco, apartamento, interfone, celular, **extra_fields):
-        
+
         if not email:
             raise ValueError("O email não pode ficar em branco")
         if not bloco:
@@ -18,12 +18,12 @@ class MoradorManager(BaseUserManager):
             raise ValueError("O celular não pode ficar em branco")
 
         usuario = self.model(
-            email = self.normalize_email(email),
-            password = password,
-            bloco = bloco,
-            apartamento = apartamento,
-            interfone = interfone, 
-            celular = celular, 
+            email=self.normalize_email(email),
+            password=password,
+            bloco=bloco,
+            apartamento=apartamento,
+            interfone=interfone,
+            celular=celular,
             **extra_fields
         )
         usuario.set_password(password)
@@ -36,16 +36,16 @@ class MoradorManager(BaseUserManager):
         extra_fields.setdefault("is_superuser", True)
 
         usuario = self.create_user(
-            email = self.normalize_email(email),
-            password = password,
-            bloco = bloco,
-            apartamento = apartamento,
-            interfone = interfone, 
-            celular = celular,
+            email=self.normalize_email(email),
+            password=password,
+            bloco=bloco,
+            apartamento=apartamento,
+            interfone=interfone,
+            celular=celular,
             **extra_fields
         )
         return usuario
-        
+
 
 class Morador(AbstractUser):
 
@@ -70,12 +70,13 @@ class Morador(AbstractUser):
         (32, "32"),
     ]
     apartamento = models.IntegerField(choices=opcoes_apartamento)
-    
+
     interfone = models.IntegerField()
     celular = models.IntegerField()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ["password", "bloco", "apartamento", "interfone", "celular"]
+    REQUIRED_FIELDS = ["password", "bloco",
+                       "apartamento", "interfone", "celular"]
 
     objects = MoradorManager()
 
@@ -87,13 +88,14 @@ class Morador(AbstractUser):
 
 
 class Reserva(models.Model):
-    
-    morador = models.ForeignKey(Morador, on_delete=models.CASCADE, verbose_name="ID do morador")
+
+    morador = models.ForeignKey(
+        Morador, on_delete=models.CASCADE, verbose_name="ID do morador")
     data = models.DateField()
 
 
 class Reuniao(models.Model):
-    
+
     data = models.DateTimeField(verbose_name="Data e horário da reunião")
     assunto = models.CharField(max_length=300)
 
@@ -102,7 +104,7 @@ class Reuniao(models.Model):
 
 
 class Aviso(models.Model):
-    
+
     assunto = models.CharField(max_length=300)
     corpo = models.TextField()
     data_postagem = models.DateTimeField(auto_now_add=True)
@@ -110,13 +112,13 @@ class Aviso(models.Model):
 
 
 class Reclamacao(models.Model):
-    
+
     RECLAMACAO = "reclamacao"
     SUGESTAO = "sugestao"
     opcoes = [
         (RECLAMACAO, "Reclamação"),
         (SUGESTAO, "Sugestão"),
-    ]    
+    ]
     tipo = models.CharField(choices=opcoes, max_length=50)
 
     assunto = models.CharField(max_length=300)
@@ -125,4 +127,3 @@ class Reclamacao(models.Model):
 
     class Meta:
         verbose_name_plural = "Reclamacoes"
-

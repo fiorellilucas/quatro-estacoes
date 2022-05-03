@@ -136,5 +136,5 @@ LOGIN_URL = 'quatroestacoes:login'
 AUTH_USER_MODEL = 'quatroestacoes.Morador'
 
 AUTHENTICATION_BACKENDS = (
-        'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
