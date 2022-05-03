@@ -1,19 +1,97 @@
-{% if form.errors %}
-    {{ form.errors }}
-{% endif %}
+{% load static %}
 
-<form method="post">{% csrf_token %}
-    <table>
-    <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-    </tr>
-    </table>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'quatroestacoes/login/css/style.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="widht=device-widht, initial-scale=1.0" />
+  </head>
 
-    <input type="submit" value="Login">
-    <input type="hidden" name="next" value="{{ next }}">
-</form>
+  <body>
+    <div class="intro">
+      <h1 class="logo-header">
+        <span class="logo" id="quatro">Quatro</span
+        ><span class="logo" id="estacoes">Estações</span>
+      </h1>
+    </div>
+
+    <div class="container-login">
+      <div class="content first-content">
+        <div class="first-column">
+          <h2 class="title title-primary">Bem-vindo de volta!</h2>
+          <p class="description description-primary">
+            Para se manter conectado conosco
+          </p>
+          <p class="description description-primary">
+            por favor faça o login com suas informações pessoais
+          </p>
+          <button id="signin" class="btn btn-primary">Entrar</button>
+        </div>
+        <div class="second-column">
+          <img
+            id="logoCondominio"
+            src="{% static 'quatroestacoes/login/img/logo.png' %}"
+            alt="logo condominio"
+          />
+        </div>
+      </div>
+      <div class="content second-content">
+        <div class="first-column">
+          <h2 class="title title-primary">Olá, Amigo!</h2>
+          <p class="description description-primary">
+            Insira seus dados pessoais
+          </p>
+          <p class="description description-primary">
+            e resolva os assuntos do condomínio conosco
+          </p>
+          <button id="signup" class="btn btn-primary">inscrever-se</button>
+        </div>
+        <div class="second-column">
+          <img
+            id="logoCondominio"
+            src="{% static 'quatroestacoes/login/img/logo.png' %}"
+            alt="logo condominio"
+          />
+
+          <h3 class="title title-second">Entre com seu email</h3>
+          <form class="form" method="post">{% csrf_token %}
+
+            <label class="label-input" for="">
+                <i class="far fa-envelope icon-modify"></i>
+                {{ form.username }}
+            </label>
+
+           <label class="label-input" for="">
+              <i class="fas fa-lock icon-modify"></i>
+              {{ form.password }}
+            </label> 
+
+            <a class="password" href="#">Esqueceu sua senha?</a>
+            <button type='submit' class="btn btn-second">Fazer Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'quatroestacoes/login/js/app.js' %}"></script>
+  </body>
+</html>
