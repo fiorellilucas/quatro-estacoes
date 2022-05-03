@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;1,100;1,200&family=Roboto:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Bitter", serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 header {
@@ -41,10 +42,12 @@ header h4 {
 }
 
 #quatro {
+  font-family: "Bitter", serif;
   color: #000;
 }
 
 #estacoes {
+  font-family: "Bitter", serif;
   color: rgb(107, 104, 104);
 }
 
@@ -599,14 +602,29 @@ input:-webkit-autofill {
   }
 }
 
-@media screen and (max-width: 740px) {
+/* @media screen and (max-width: 740px) {
   .form {
     width: 50%;
   }
-}
+} */
 
 @media screen and (max-width: 425px) {
   .form {
     width: 100%;
   }
+}
+
+@media screen and (max-height: 750px) {
+  .content {
+    height: 80%;
+    width: 85%;
+  } 
+}
+
+
+@media screen and (max-height: 800px) {
+  .content {
+    height: 75%;
+    width: 80%;
+  } 
 }
