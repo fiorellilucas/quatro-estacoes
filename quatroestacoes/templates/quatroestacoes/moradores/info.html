@@ -5,8 +5,7 @@
 
 {% block conteudo %}
 {% if morador %}
-    <div class="container-div-morador">
-        <div class="container-info-usuario">
+        <div class="container-form">
             <h3>INFORMAÇÕES DO MORADOR</h3>
             <p><span>Nome:</span> {{ morador.first_name }}<br></p>
             <p><span>Sobrenome:</span> {{ morador.last_name }}<br></p>
@@ -15,14 +14,17 @@
             <p><span>Interfone:</span> {{ morador.interfone }}<br></p>
             <p><span>Celular:</span> {{ morador.celular }}<br></p>
             <p><span>Email:</span> {{ morador.email }}<br></p>
+        
+        <br>
+        {% if request.user.is_staff %}
+            <a class="btn-acao" href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a class="btn-acao" href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
+        {% endif %}
+        
+        {% comment %} resolver com professor {% endcomment %}
+        <br>
+        <br>
+        {% comment %} resolver com professor {% endcomment %}
         </div>
-
-        <div class="container-alterar-morador">
-            {% if request.user.is_staff %}
-                <a href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
-            {% endif %}
-        </div>
-    </div>
 {% else %}
     <p>morador indisponível</p>
 {% endif %}

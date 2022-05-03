@@ -4,11 +4,12 @@
 {% block titulo %}Reservas{% endblock titulo %}
 
 {% block conteudo %}
-<div class="container-reclamacoes">
-    <div class="container-adicionar-morador">
-        <a href="{% url 'quatroestacoes:reservas_add' %}">Reservar salão de festas</a>
+<div class="container-pagina-outros">
+    <div class="container-criar">
+        <a href="{% url 'quatroestacoes:reservas_add' %}" class="btn-acao">Reservar salão de festas</a>
+        <br><br>
     </div>
-    <div class="container-info-usuario">
+    <div class="container-lista">
         {% if reservas %}
             <ul style="padding: 0;">
             {% for reserva in reservas %}

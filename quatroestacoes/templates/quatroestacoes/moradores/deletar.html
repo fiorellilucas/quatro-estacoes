@@ -3,15 +3,11 @@
 {% block active_moradores %}active{% endblock active_moradores %}
 
 {% block conteudo %}
-<div class="container-div-form-morador">
-    <div class="container-form-morador"> 
+    <div class="container-form"> 
         <form method="post">{% csrf_token %}
             <p style="text-align: center; font-size: 17px">Deseja mesmo apagar o morador "<span>{{ morador.first_name }} {{ morador.last_name }}</span>"?</p>
             {{ form }}
-            <div class="container-alterar-morador">
-                <input type="submit" value="Apagar">
-            </div>
+            <button type="submit" class="btn-acao">Apagar</button>
         </form>
     </div>
-</div>
 {% endblock conteudo %}

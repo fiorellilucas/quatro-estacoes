@@ -2,16 +2,11 @@
 {% block titulo %}Reservar salão{% endblock titulo %}
 
 {% block conteudo %}
-
-<div class="container-div-form-morador">
-    <div class="container-form-morador">   
+    <div class="container-form">   
         <form method="post">{% csrf_token %}
             <h3>RESERVAR SALÃO DE FESTAS</h3>
             <span>{{ form.as_p }}</span>
-            <div class="container-cadastrar-morador">
-                <input type="submit" value="Reservar salão">
-            </div>
+            <button type="submit" class="btn-acao">Reservar salão</button>
         </form>
     </div>
-</div>
 {% endblock conteudo %}

@@ -4,14 +4,11 @@
 {% block titulo %}Alterar morador{% endblock titulo %}
 
 {% block conteudo %}
-<div class="container-div-form-morador">
-    <div class="container-form-morador">    
+    <div class="container-form">    
         <form method="post">{% csrf_token %}
             <h3>ALTERAR MORADOR</h3>
             <span>{{ form.as_p }}</span>
-            <div class="container-alterar-morador">
-                <input type="submit" value="Alterar informações">
-            </div>
+            <button type="submit" class="btn-acao">Alterar informações</button>
         </form>
     </div>
 </div>

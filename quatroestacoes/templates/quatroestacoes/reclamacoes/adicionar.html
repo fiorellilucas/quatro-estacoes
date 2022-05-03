@@ -4,15 +4,11 @@
 {% block titulo %}Criar reclamação{% endblock titulo %}
 
 {% block conteudo %}
-<div class="container-div-form-morador">
-    <div class="container-form-morador">   
+    <div class="container-form">   
         <form method="post">{% csrf_token %}
             <h3>CRIAR RECLAMAÇÃO</h3>
             <span>{{ form.as_p }}</span>
-            <div class="container-cadastrar-morador">
-                <input type="submit" value="Enviar reclamação/sugestão">
-            </div>
+            <button class="btn-acao" type="submit">Enviar reclamação/sugestão</button>
         </form>
     </div>
-</div>
 {% endblock conteudo %}

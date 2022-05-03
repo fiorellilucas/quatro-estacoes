@@ -1,0 +1,60 @@
+.container-moradores {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: space-between;
+    
+}
+
+.container-bloco {
+    width: 300px;
+    margin: 0 1em;
+    padding: 0 1em;
+    display: block;
+    height: 500px;
+}
+
+.container-bloco p {
+    text-align: left;
+}
+
+.container-bloco-a {
+    background-color: rgba(255, 0, 191, 0.15);
+}
+
+.container-bloco-a h3 {
+    padding: 0 0 20px;
+    border-bottom: 1px solid rgba(135, 1, 102, 0.8);
+}
+
+.container-bloco-b {
+    background-color: rgba(255, 247, 0, 0.15);
+}
+
+.container-bloco-b h3 {
+    padding: 0 0 20px;
+    border-bottom: 1px solid rgba(132, 84, 0, 0.8);
+}
+
+.container-bloco-c {
+    background-color: rgba(0, 255, 4, 0.15);
+}
+
+.container-bloco-c h3 {
+    padding: 0 0 20px;
+    border-bottom: 1px solid rgba(0, 133, 2, 0.8);
+}
+
+.container-bloco-d {
+    background-color: rgba(0, 0, 255, 0.15);
+}
+
+.container-bloco-d h3 {
+    padding: 0 0 20px;
+    border-bottom: 1px solid rgba(0, 0, 156, 0.8);
+}
+
+.container-div-morador {
+    width: 100%;
+    max-width: 600px;
+}

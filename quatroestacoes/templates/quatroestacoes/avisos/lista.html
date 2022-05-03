@@ -4,25 +4,24 @@
 {% block titulo %}Avisos{% endblock titulo %}
 
 {% block conteudo %}
-<div class="container-avisos">
-    <div class="container-adicionar-morador">
-        <a href="{% url 'quatroestacoes:avisos_add' %}">Criar aviso</a>
+<div class="container-pagina-outros">
+    <div class="container-criar">
+        <a href="{% url 'quatroestacoes:avisos_add' %}" class="btn-acao">Criar aviso</a>
+        <br><br>
     </div>
-    <div class="container-info-usuario">
+    <div class="container-lista">
         {% if avisos %}
-            <ul style="padding: 0;">
             {% for aviso in avisos %}
-                <li style="border-bottom: 1px solid #694C00;">
+                <p style="border-bottom: 1px solid #694C00;">
                     {{ aviso.data_postagem }} - {{ aviso.assunto }}<br>
                     {{ aviso.corpo }}<br>
                     {{ aviso.data_evento }}
                     <br><br>
-                </li>
+                </p>
                 <br>
             {% endfor %}
-            </ul>
         {% else %}
-            <p>nenhum aviso disponível</p>
+            <p>Nenhum aviso disponível.</p>
         {% endif %}
     </div>
 </div>

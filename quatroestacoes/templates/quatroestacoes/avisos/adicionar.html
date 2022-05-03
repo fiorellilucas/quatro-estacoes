@@ -4,16 +4,12 @@
 {% block titulo %}Criar aviso{% endblock titulo %}
 
 {% block conteudo %}
-<div class="container-div-form-morador">
-    <div class="container-form-morador">   
+    <div class="container-form">   
         <form method="post">{% csrf_token %}
             <h3>CRIAR AVISO</h3>
             <span>{{ form.as_p }}</span>
-            <div class="container-cadastrar-morador">
-                <input type="submit" value="Criar aviso">
-            </div>
+            <button type="submit" class="btn-acao">Criar aviso</button>
         </form>
     </div>
-</div>
 
 {% endblock conteudo %}
