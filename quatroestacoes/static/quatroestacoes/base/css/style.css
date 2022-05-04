@@ -42,6 +42,10 @@ img {
   pointer-events: none;
 }
 
+textarea {
+  resize: none;
+}
+
 .img-logo {
   height: 60px;
   object-fit: scale-down;
