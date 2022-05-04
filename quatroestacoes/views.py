@@ -155,7 +155,3 @@ class ReservasAddView(LoginRequiredMixin, CreateView):
     template_name = "quatroestacoes/reservas/adicionar.html"
     form_class = forms.ReservaForm
     success_url = SUCCESS_INDEX_URL
-
-    def form_valid(self, form):
-        form.instance.morador = self.request.user
-        return super().form_valid(form)

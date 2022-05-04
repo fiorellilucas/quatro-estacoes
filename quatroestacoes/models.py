@@ -81,7 +81,8 @@ class Morador(AbstractUser):
     objects = MoradorManager()
 
     def __str__(self):
-        return self.email
+        nome_completo = f"{self.first_name} {self.last_name}"
+        return nome_completo
 
     class Meta:
         verbose_name_plural = "Moradores"
