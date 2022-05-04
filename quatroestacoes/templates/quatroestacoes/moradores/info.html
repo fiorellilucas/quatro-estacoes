@@ -12,18 +12,17 @@
             <p><span>Bloco:</span> {{ morador.bloco }}<br></h3>
             <p><span>Apartamento:</span> {{ morador.apartamento }}<br></p>
             <p><span>Interfone:</span> {{ morador.interfone }}<br></p>
-            <p><span>Celular:</span> {{ morador.celular }}<br></p>
-            <p><span>Email:</span> {{ morador.email }}<br></p>
-        
-        <br>
+            {% if request.user.is_staff %}
+                <p><span>Celular:</span> {{ morador.celular }}<br></p>
+                <p><span>Email:</span> {{ morador.email }}<br></p>
+            {% endif %}
+
         {% if request.user.is_staff %}
+            <br>    
             <a class="btn-acao" href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a class="btn-acao" href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
+            <br>
+            <br>
         {% endif %}
-        
-        {% comment %} resolver com professor {% endcomment %}
-        <br>
-        <br>
-        {% comment %} resolver com professor {% endcomment %}
         </div>
 {% else %}
     <p>morador indisponível</p>
