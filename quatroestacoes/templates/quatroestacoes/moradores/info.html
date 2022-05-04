@@ -19,7 +19,7 @@
 
         {% if request.user.is_staff %}
             <br>    
-            <a class="btn-acao" href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a class="btn-acao" href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
+            <a class="btn-acao" href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a class="btn-deletar" href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
             <br>
             <br>
         {% endif %}
