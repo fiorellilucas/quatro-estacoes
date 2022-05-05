@@ -14,14 +14,14 @@
             <ul style="padding: 0;">
                 {% for aviso in avisos %}
                     <li style="border-bottom: 1px solid #694C00;">
-                        {{ aviso.data_postagem }} - {{ aviso.assunto }}<br>
-                        {{ aviso.corpo }}<br>
+                        {{ aviso.data_postagem }} - {{ aviso.assunto }}<br><br>
+                        {{ aviso.corpo }}<br><br>
                         {{ aviso.data_evento }}
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p>Nenhum aviso disponível.</p>
+            <p>Nenhum aviso disponível</p>
         {% endif %}
     </div>
 </div>

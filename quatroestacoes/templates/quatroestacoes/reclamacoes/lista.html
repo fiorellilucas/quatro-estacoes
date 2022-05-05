@@ -14,14 +14,14 @@
             <ul style="padding: 0;">
             {% for reclamacao in reclamacoes %}
                 <li style="border-bottom: 1px solid #694C00;">
-                    {{ reclamacao.tipo }}<br>
-                    {{ reclamacao.data_postagem }} - {{ reclamacao.assunto }}<br>
+                    {{ reclamacao.get_tipo_display }}<br><br>
+                    {{ reclamacao.data_postagem }} - {{ reclamacao.assunto }}<br><br>
                     {{ reclamacao.corpo }}
                 </li>
             {% endfor %}
             </ul>
         {% else %}
-            <p>nenhuma reclamação ou sugestão disponível</p>
+            <p>Nenhuma reclamação ou sugestão disponível</p>
         {% endif %}
     </div>
 </div>
