@@ -72,7 +72,7 @@ class Morador(AbstractUser):
     apartamento = models.IntegerField(choices=opcoes_apartamento)
 
     interfone = models.IntegerField()
-    celular = models.IntegerField()
+    celular = models.BigIntegerField()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["password", "bloco",
