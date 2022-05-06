@@ -14,10 +14,15 @@
             <ul style="padding: 0;">
                 {% for aviso in avisos %}
                     <li style="border-bottom: 1px solid #694C00; text-align: left">
-                        <a href="{% url 'quatroestacoes:avisos_info' aviso.id %}"><span>{{ aviso.data_postagem }} - {{ aviso.assunto }}</span><br><br></a>
+                        <a href="{% url 'quatroestacoes:avisos_info' aviso.id %}">
+                            <span>
+                                {{ aviso.data_postagem }}<br><br>
+                                <span style="font-size: 1.2em;">{{ aviso.assunto }}</span>
+                            </span><br>
+                        </a>
                         {{ aviso.corpo|truncatechars:70 }}<br><br>
                         {% if aviso.data_evento != None %}
-                            {{ aviso.data_evento }}<br><br>
+                            Acontecerá em <span>{{ aviso.data_evento }}</span><br><br>
                         {% endif %}
                     </li>
                     <br>
