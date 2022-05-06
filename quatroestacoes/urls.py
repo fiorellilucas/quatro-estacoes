@@ -20,6 +20,7 @@ urlpatterns = [
     path("avisos/adicionar", views.AvisosAddView.as_view(), name="avisos_add"),
     
     path("reclamacoes/", views.ReclamacoesListaView.as_view(), name="reclamacoes_lista"),
+    path("reclamacoes/<int:pk>", views.ReclamacoesInfoView.as_view(), name="reclamacoes_info"),
     path("reclamacoes/adicionar", views.ReclamacoesAddView.as_view(), name="reclamacoes_add"),
     
     path("reunioes/", views.ReunioesListaView.as_view(), name="reunioes_lista"),

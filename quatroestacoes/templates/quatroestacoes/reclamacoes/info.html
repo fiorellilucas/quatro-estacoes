@@ -1,0 +1,10 @@
+{% extends 'quatroestacoes/base.html' %}
+
+{% block conteudo %}
+    <div class="container-form">
+        <h3>{{ reclamacao.get_tipo_display|upper }}</h3>
+        <p><span>ASSUNTO: </span>{{ reclamacao.assunto }}</p>
+        <p><span>CORPO: </span>{{ reclamacao.corpo }}</p>
+        <p><span>DATA DE POSTAGEM: </span>{{ reclamacao.data_postagem }}</p>
+    </div>
+{% endblock conteudo %}

@@ -116,6 +116,13 @@ class ReclamacoesListaView(LoginRequiredMixin, ListView):
     context = models.Reclamacao.objects.all()
     context_object_name = "reclamacoes"
     template_name = "quatroestacoes/reclamacoes/lista.html"
+    
+    
+class ReclamacoesInfoView(LoginRequiredMixin, DetailView):
+    
+    model = models.Reclamacao
+    template_name = "quatroestacoes/reclamacoes/info.html"
+    context_object_name = "reclamacao"
 
 
 class ReclamacoesAddView(LoginRequiredMixin, CreateView):
