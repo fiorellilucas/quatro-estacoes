@@ -132,6 +132,13 @@ class AvisosListaView(LoginRequiredMixin, ListView):
     context = models.Aviso.objects.all()
     context_object_name = "avisos"
     template_name = "quatroestacoes/avisos/lista.html"
+    
+    
+class AvisosInfoView(LoginRequiredMixin, DetailView):
+    
+    model = models.Aviso
+    template_name = "quatroestacoes/avisos/info.html"
+    context_object_name = "aviso"
 
 
 class AvisosAddView(LoginRequiredMixin, CreateView):

@@ -1,0 +1,13 @@
+{% extends 'quatroestacoes/base.html' %}
+
+{% block conteudo %}
+    <div class="container-form">
+        <h3>AVISO</h3>
+        <p>ASSUNTO: <span>{{ aviso.assunto }}</span></p>
+        <p>CORPO: <span>{{ aviso.corpo }}</span></p>
+        <p>DATA DE POSTAGEM: <span>{{ aviso.data_postagem }}</span></p>
+        {% if aviso.data_evento != None %}
+            <p>DATA DO EVENTO: <span>{{ aviso.data_evento }}</span></p>
+        {% endif %}
+    </div>
+{% endblock conteudo %}

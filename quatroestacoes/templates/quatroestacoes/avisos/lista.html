@@ -14,8 +14,8 @@
             <ul style="padding: 0;">
                 {% for aviso in avisos %}
                     <li style="border-bottom: 1px solid #694C00;">
-                        {{ aviso.data_postagem }} - {{ aviso.assunto }}<br><br>
-                        {{ aviso.corpo }}<br><br>
+                        <a href="{% url 'quatroestacoes:avisos_info' aviso.id %}">{{ aviso.data_postagem }} - {{ aviso.assunto }}<br><br></a>
+                        {{ aviso.corpo|truncatechars:70 }}<br><br>
                         {{ aviso.data_evento }}
                     </li>
                 {% endfor %}
