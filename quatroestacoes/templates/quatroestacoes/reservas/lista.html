@@ -11,9 +11,12 @@
     </div>
     <div class="container-lista">
         {% if reservas %}
-            <ul style="padding: 0;">
+            <ul style="padding: 0; text-align: left;">
             {% for reserva in reservas %}
-                <li style="border-bottom: 1px solid #694C00;">{{ reserva.data }} - {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</li><br>
+                <li style="border-bottom: 1px solid #694C00;">
+                    <span>{{ reserva.data }}</span><br>
+                    {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}<br><br>
+                </li><br>
             {% endfor %}
             </ul>
         {% else %}
