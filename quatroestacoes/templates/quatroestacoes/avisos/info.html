@@ -3,11 +3,11 @@
 {% block conteudo %}
     <div class="container-form">
         <h3>AVISO</h3>
-        <p>ASSUNTO: <span>{{ aviso.assunto }}</span></p>
-        <p>CORPO: <span>{{ aviso.corpo }}</span></p>
-        <p>DATA DE POSTAGEM: <span>{{ aviso.data_postagem }}</span></p>
+        <p><span>ASSUNTO: </span>{{ aviso.assunto }}</p>
+        <p><span>CORPO: </span>{{ aviso.corpo }}</p>
+        <p><span>DATA DE POSTAGEM: </span>{{ aviso.data_postagem }}</p>
         {% if aviso.data_evento != None %}
-            <p>DATA DO EVENTO: <span>{{ aviso.data_evento }}</span></p>
+            <p><span>DATA DO EVENTO: </span>{{ aviso.data_evento }}</p>
         {% endif %}
     </div>
 {% endblock conteudo %}
