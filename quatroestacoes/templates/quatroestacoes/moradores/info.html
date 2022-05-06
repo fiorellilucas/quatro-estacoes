@@ -7,14 +7,14 @@
 {% if morador %}
         <div class="container-form">
             <h3>INFORMAÇÕES DO MORADOR</h3>
-            <p><span>Nome:</span> {{ morador.first_name }}<br></p>
-            <p><span>Sobrenome:</span> {{ morador.last_name }}<br></p>
-            <p><span>Bloco:</span> {{ morador.bloco }}<br></h3>
-            <p><span>Apartamento:</span> {{ morador.apartamento }}<br></p>
-            <p><span>Interfone:</span> {{ morador.interfone }}<br></p>
+            <p>NOME: <span>{{ morador.first_name }}</span><br></p>
+            <p>SOBRENOME: <span>{{ morador.last_name }}</span><br></p>
+            <p>BLOCO: <span>{{ morador.bloco }}</span><br>
+            <p>APARTAMENTO: <span>{{ morador.apartamento }}</span><br></p>
+            <p>INTERFONE: <span>{{ morador.interfone }}</span><br></p>
             {% if request.user.is_staff %}
-                <p><span>Celular:</span> {{ morador.celular }}<br></p>
-                <p><span>Email:</span> {{ morador.email }}<br></p>
+                <p>CELULAR: <span>{{ morador.celular }}</span><br></p>
+                <p>EMAIL: <span>{{ morador.email }}</span><br></p>
             {% endif %}
 
         {% if request.user.is_staff %}
@@ -25,6 +25,6 @@
         {% endif %}
         </div>
 {% else %}
-    <p>morador indisponível</p>
+    <p>Morador indisponível</p>
 {% endif %}
 {% endblock conteudo %}
