@@ -1,6 +1,7 @@
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetConfirmView, PasswordResetCompleteView, PasswordResetDoneView, PasswordResetView
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from . import models, forms
@@ -18,7 +19,31 @@ class MyLoginView(LoginView):
 class MyLogoutView(LogoutView):
 
     next_page = "quatroestacoes:login"
+    
+    
+class MudarSenhaView(PasswordResetView):
+    
+    extra_email_context = {
+        "site_name": "Condomínio Quatro Estações"
+    }
+    template_name = "quatroestacoes/mudar-senha/email.html"
+        
+    
+class MudarSenhaPronto(PasswordResetDoneView):
+    
+    template_name = "quatroestacoes/mudar-senha/pronto.html"
+    
+    
+class MudarSenhaConfirmar(PasswordResetConfirmView):
+    
+    template_name = "quatroestacoes/mudar-senha/confirmar.html"
+    form_class = forms.AlterarSenhaForm
 
+
+class MudarSenhaCompletar(PasswordResetCompleteView):
+    
+    template_name = "quatroestacoes/mudar-senha/completar.html"
+    
 
 class IndexView(LoginRequiredMixin, ListView):
 

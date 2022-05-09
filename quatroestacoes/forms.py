@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django import forms
 
 from . import models
@@ -77,3 +77,8 @@ class ReservaForm(ModelForm):
         widgets = {
             "data": forms.DateInput(attrs={"type": "date"}),
         }
+
+
+class AlterarSenhaForm(SetPasswordForm):
+    
+    pass

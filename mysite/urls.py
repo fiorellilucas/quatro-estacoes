@@ -16,7 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from quatroestacoes import views
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include('quatroestacoes.urls'))
+    path("", include('quatroestacoes.urls')),
+    path("senha/", views.MudarSenhaView.as_view(), name="password_reset"),
+    path("senha/pronto", views.MudarSenhaPronto.as_view(), name="password_reset_done"),
+    path("senha/confirmar/<uidb64>/<token>", views.MudarSenhaConfirmar.as_view(), name="password_reset_confirm"),
+    path("senha/completar", views.MudarSenhaCompletar.as_view(), name="password_reset_complete"),   
 ]
