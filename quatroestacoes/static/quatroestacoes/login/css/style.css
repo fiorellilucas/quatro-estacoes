@@ -99,7 +99,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #ecf0f1;
+  background-color: #ffffe6;
   flex-direction: column;
 }
 
@@ -191,6 +191,7 @@ body {
 
 .first-content {
   display: flex;
+  box-shadow: 0 0 3em #d8d8d8;
 }
 
 .first-content .second-column {
