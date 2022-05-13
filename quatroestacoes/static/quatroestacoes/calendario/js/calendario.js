@@ -132,9 +132,9 @@ let renderCalendar = () => {
           dia.getFullYear() == dataHoje.getFullYear() &&
           dia.getMonth() == dataHoje.getMonth()
         ) {
-          days += `<div class="today" onclick="${paginaReservas}">${dia.getDate()}</div>`;
+          days += `<div class="hoje" onclick="${paginaReservas}">${dia.getDate()}</div>`;
         } else {
-          days += `<div class="" onclick="${paginaReservas}">${dia.getDate()}</div>`;
+          days += `<div class="normal" onclick="${paginaReservas}">${dia.getDate()}</div>`;
         }
       }
     } else {
