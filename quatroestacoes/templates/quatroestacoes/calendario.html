@@ -14,7 +14,6 @@
                     <div class="date">
                         <h1 class='header'></h1>
                         <h2 class='header'></h2>
-
                     </div>
                     <i class="fa fa-caret-right next"></i>
                 </div>
@@ -32,5 +31,7 @@
             </div>
         </div>
     </div>
+    {{ reservas|json_script:"reservas" }}
+    {{ moradores|json_script:"moradores" }}
     <script src="{% static 'quatroestacoes/calendario/js/calendario.js' %}"></script>
 {% endblock conteudo %}

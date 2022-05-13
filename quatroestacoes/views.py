@@ -19,31 +19,31 @@ class MyLoginView(LoginView):
 class MyLogoutView(LogoutView):
 
     next_page = "quatroestacoes:login"
-    
-    
+
+
 class MudarSenhaView(PasswordResetView):
-    
+
     extra_email_context = {
         "site_name": "Condomínio Quatro Estações"
     }
     template_name = "quatroestacoes/mudar-senha/email.html"
-        
-    
+
+
 class MudarSenhaPronto(PasswordResetDoneView):
-    
+
     template_name = "quatroestacoes/mudar-senha/pronto.html"
-    
-    
+
+
 class MudarSenhaConfirmar(PasswordResetConfirmView):
-    
+
     template_name = "quatroestacoes/mudar-senha/confirmar.html"
     form_class = forms.AlterarSenhaForm
 
 
 class MudarSenhaCompletar(PasswordResetCompleteView):
-    
+
     template_name = "quatroestacoes/mudar-senha/completar.html"
-    
+
 
 class IndexView(LoginRequiredMixin, ListView):
 
@@ -116,6 +116,10 @@ class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class CalendarioView(LoginRequiredMixin, TemplateView):
 
+    extra_context = {
+        "reservas": list(models.Reserva.objects.all().values()),
+        "moradores": list(models.Morador.objects.all().values("id", "first_name", "last_name"))
+    }
     template_name = "quatroestacoes/calendario.html"
 
 
@@ -141,10 +145,10 @@ class ReclamacoesListaView(LoginRequiredMixin, ListView):
     context = models.Reclamacao.objects.all()
     context_object_name = "reclamacoes"
     template_name = "quatroestacoes/reclamacoes/lista.html"
-    
-    
+
+
 class ReclamacoesInfoView(LoginRequiredMixin, DetailView):
-    
+
     model = models.Reclamacao
     template_name = "quatroestacoes/reclamacoes/info.html"
     context_object_name = "reclamacao"
@@ -164,10 +168,10 @@ class AvisosListaView(LoginRequiredMixin, ListView):
     context = models.Aviso.objects.all()
     context_object_name = "avisos"
     template_name = "quatroestacoes/avisos/lista.html"
-    
-    
+
+
 class AvisosInfoView(LoginRequiredMixin, DetailView):
-    
+
     model = models.Aviso
     template_name = "quatroestacoes/avisos/info.html"
     context_object_name = "aviso"
@@ -195,3 +199,4 @@ class ReservasAddView(LoginRequiredMixin, CreateView):
     template_name = "quatroestacoes/reservas/adicionar.html"
     form_class = forms.ReservaForm
     success_url = SUCCESS_INDEX_URL
+        

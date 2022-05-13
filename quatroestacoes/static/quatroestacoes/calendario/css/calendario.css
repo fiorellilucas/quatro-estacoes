@@ -80,8 +80,8 @@
     align-items: center;  
 }
 
-.days div:hover:not(.today){
-    background-color: rgb(227, 202, 141);
+.days div:hover:not(.today, .evento){
+    background-color: #e3ca8d;
 }
 
 .prev-date, .next-date {
@@ -89,5 +89,18 @@
 }
 
 .today{
-    background-color: rgb(227, 202, 141);
+    background-color: #e3ca8d;
+    outline: 2px solid black;
+}
+
+.today:hover {
+    background-color: #cfab59;
+}
+
+.reserva {
+    background-color: #7AFA00;
+}
+
+.reserva:hover {
+    background-color: #63cb00;
 }
