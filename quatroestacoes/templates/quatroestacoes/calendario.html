@@ -6,7 +6,6 @@
 {% block active_calendario %}active{% endblock active_calendario %}
 
 {% block conteudo %}
-    <div class="box-calendario">
         <div class="container-calendario">
             <div class="calendar">
                 <div class="month">
@@ -30,7 +29,6 @@
                 </div>
             </div>
         </div>
-    </div>
     {{ reservas|json_script:"reservas" }}
     {{ moradores|json_script:"moradores" }}
     <script src="{% static 'quatroestacoes/calendario/js/calendario.js' %}"></script>

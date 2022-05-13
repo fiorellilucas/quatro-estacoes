@@ -7,14 +7,12 @@ html {
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
+  height: 100%;
   background: linear-gradient(rgba(219, 204, 167, 1), rgba(255, 255, 255, 0.5)),
-    url("../img/fundo.png");
+  url("../img/fundo.png");
   background-size: cover;
   background-repeat: no-repeat;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  overflow: hidden;
   margin: 0;
   padding: 0;
 }
@@ -151,6 +149,7 @@ textarea {
 }
 
 .container {
+  height: 70%;
   padding: 20px;
   margin: 20px;
   display: flex;
@@ -347,6 +346,7 @@ span {
 }
 
 .container-form {
+  height: max-content;
   width: 100%;
   max-width: 600px;
   background-color: rgba(186, 151, 64, 0.35);
@@ -363,6 +363,8 @@ span {
   background-color: rgba(186, 151, 64, 0.35);
   padding: 1em;
   margin: 1em;
+  overflow-y: scroll;
+  max-height: 70%;
 }
 
 .btn-acao, 
