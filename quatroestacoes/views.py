@@ -1,7 +1,7 @@
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetConfirmView, PasswordResetCompleteView, PasswordResetDoneView, PasswordResetView
-
+from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from . import models, forms
@@ -45,17 +45,16 @@ class MudarSenhaCompletar(PasswordResetCompleteView):
     template_name = "quatroestacoes/mudar-senha/completar.html"
 
 
-class IndexView(LoginRequiredMixin, ListView):
+class IndexView(LoginRequiredMixin, TemplateView):
 
-    model = models.Reserva
     template_name = "quatroestacoes/index.html"
-    context = models.Reserva.objects.all()
-    context_object_name = "reservas"
 
     def get_context_data(self, **kwargs):
 
         context = super(IndexView, self).get_context_data(**kwargs)
-        context["avisos"] = models.Aviso.objects.all()
+        context["avisos"] = models.Aviso.objects.all().order_by("-data_postagem")[:3]
+        context["reservas"] = models.Reserva.objects.all().order_by("data")[:6]
+        context["data_atual"] = timezone.localdate()
         return context
 
 

@@ -6,18 +6,43 @@
 {% block conteudo %}
     <div class="container-home">
         <div class="info-comunicados">
-            <h3>QUADRO DE AVISOS</h3>
+            <h2>QUADRO DE AVISOS</h2>
+            <div class="container-avisos-home">
+                {% if avisos %}
+                    {% for aviso in avisos %}
+                        <div class="aviso-home">
+                            <a href="{% url 'quatroestacoes:avisos_info' aviso.id %}">
+                                <span>
+                                    {{ aviso.data_postagem }}<br><br>
+                                    <span style="font-size: 1.2em;">{{ aviso.assunto }}</span>
+                                </span><br>
+                            </a>
+                            <p>{{ aviso.corpo|truncatechars:100 }}</p><br><br>
+                            {% if aviso.data_evento != None %}
+                                <p>Acontecerá em <br><span>{{ aviso.data_evento }}</span></p>
+                            {% else %}
+                                <p>Acontecerá em <br><span>Sem data marcada<span></p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+            {% else %}
+                <p>Nenhum aviso disponível</p>
+            {% endif %}
+            </div>
+
         </div>
     
         <div class="info-salao">
-            <h3>SALÃO DE FESTAS</h3>
+            <h2>SALÃO DE FESTAS</h2>
             {% if reservas %}
-                <ul style="padding: 10%; text-align: left;">
+                <ul class="container-salao-home">
                 {% for reserva in reservas %}
-                    <li style="border-bottom: 1px solid #694C00;">
-                        <span>{{ reserva.data }}</span><br>
-                        {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}<br><br>
-                    </li><br>
+                    {% if reserva.data >= data_atual %}
+                        <li style="border-bottom: 1px solid #694C00;">
+                            <span>{{ reserva.data }}</span><br>
+                            {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}<br><br>
+                        </li><br>
+                    {% endif %}
                 {% endfor %}
                 </ul>
             {% else %}
@@ -25,4 +50,8 @@
             {% endif %}
         </div>
     </div>
+    {% comment %} GAMBIARRA PARA COLOCAR LINHA NO PRIMEIRO AVISO {% endcomment %}
+    <script>
+        document.getElementsByClassName("aviso-home")[0].style.borderLeft = "1px solid #694C00"
+    </script>
 {% endblock %}

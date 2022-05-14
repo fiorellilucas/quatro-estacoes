@@ -165,6 +165,37 @@ span {
   font-weight: bold;
 }
 
+.info-salao, .info-comunicados {
+  height: 85%;
+  overflow-y: scroll;
+}
+
+.container-avisos-home {
+  display: flex;
+  justify-content: center;
+  padding: 2em; 
+  text-align: left; 
+  height: 60%;
+}
+
+.container-salao-home {
+  padding: 2em; 
+  text-align: left; 
+  height: fit-content;
+  margin: 0;
+}
+
+.aviso-home {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1%;
+  padding: 0 1%;
+  max-width: 30%;
+  height: 100%;
+  border-right: 1px solid #694C00;
+  justify-content: space-around;
+}
+
 @media screen and (max-width: 730px) {
   .topnav a:not(:first-child),
   .dropdown .dropbtn {
