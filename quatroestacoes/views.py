@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetConfirmView, PasswordResetCompleteView, PasswordResetDoneView, PasswordResetView
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
 
 from . import models, forms
 
@@ -83,7 +84,7 @@ class MoradoresAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = models.Morador
     template_name = "quatroestacoes/moradores/adicionar.html"
     form_class = forms.MoradorCreationForm
-    success_url = SUCCESS_INDEX_URL
+    success_url = reverse_lazy("quatroestacoes:moradores_lista")
 
     redirect_field_name = None
 
@@ -96,7 +97,7 @@ class MoradoresUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = models.Morador
     template_name = "quatroestacoes/moradores/alterar.html"
     form_class = forms.MoradorChangeForm
-    success_url = SUCCESS_INDEX_URL
+    success_url = reverse_lazy("quatroestacoes:moradores_lista")
 
     login_url = "quatroestacoes:index"
     redirect_field_name = None
@@ -109,7 +110,7 @@ class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     model = models.Morador
     template_name = "quatroestacoes/moradores/deletar.html"
-    success_url = SUCCESS_INDEX_URL
+    success_url = reverse_lazy("quatroestacoes:moradores_lista")
     context_object_name = "morador"
 
     login_url = "quatroestacoes:index"
@@ -141,7 +142,7 @@ class ReunioesAddView(LoginRequiredMixin, CreateView):
     model = models.Reuniao
     template_name = "quatroestacoes/reunioes/adicionar.html"
     form_class = forms.ReuniaoForm
-    success_url = SUCCESS_INDEX_URL
+    success_url = reverse_lazy("quatroestacoes:reunioes_lista")
 
 
 class ReclamacoesListaView(LoginRequiredMixin, ListView):
@@ -164,7 +165,7 @@ class ReclamacoesAddView(LoginRequiredMixin, CreateView):
     model = models.Reclamacao
     template_name = "quatroestacoes/reclamacoes/adicionar.html"
     form_class = forms.ReclamacaoForm
-    success_url = SUCCESS_INDEX_URL
+    success_url = reverse_lazy("quatroestacoes:reclamacoes_lista")
 
 
 class AvisosListaView(LoginRequiredMixin, ListView):
@@ -187,7 +188,7 @@ class AvisosAddView(LoginRequiredMixin, CreateView):
     model = models.Aviso
     template_name = "quatroestacoes/avisos/adicionar.html"
     form_class = forms.AvisoForm
-    success_url = SUCCESS_INDEX_URL
+    success_url = reverse_lazy("quatroestacoes:avisos_lista")
 
 
 class ReservasListaView(LoginRequiredMixin, ListView):
@@ -203,4 +204,4 @@ class ReservasAddView(LoginRequiredMixin, CreateView):
     model = models.Reserva
     template_name = "quatroestacoes/reservas/adicionar.html"
     form_class = forms.ReservaForm
-    success_url = SUCCESS_INDEX_URL
+    success_url = reverse_lazy("quatroestacoes:reservas_lista")
