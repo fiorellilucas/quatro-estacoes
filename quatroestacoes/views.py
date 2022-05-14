@@ -47,10 +47,16 @@ class MudarSenhaCompletar(PasswordResetCompleteView):
 
 class IndexView(LoginRequiredMixin, ListView):
 
-    model = models.Aviso
-    context = models.Aviso.objects.all()
-    context_object_name = "avisos"
+    model = models.Reserva
     template_name = "quatroestacoes/index.html"
+    context = models.Reserva.objects.all()
+    context_object_name = "reservas"
+
+    def get_context_data(self, **kwargs):
+
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context["avisos"] = models.Aviso.objects.all()
+        return context
 
 
 class MoradoresListaView(LoginRequiredMixin, ListView):
@@ -199,4 +205,3 @@ class ReservasAddView(LoginRequiredMixin, CreateView):
     template_name = "quatroestacoes/reservas/adicionar.html"
     form_class = forms.ReservaForm
     success_url = SUCCESS_INDEX_URL
-        
