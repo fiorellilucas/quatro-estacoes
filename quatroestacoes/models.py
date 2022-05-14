@@ -94,6 +94,9 @@ class Reserva(models.Model):
         Morador, on_delete=models.CASCADE, verbose_name="ID do morador")
     data = models.DateField()
 
+    def __str__(self):
+        return f"{self.data}"
+
 
 class Reuniao(models.Model):
 
@@ -103,6 +106,9 @@ class Reuniao(models.Model):
     class Meta:
         verbose_name_plural = "Reunioes"
 
+    def __str__(self):
+        return f"{self.assunto}"
+
 
 class Aviso(models.Model):
 
@@ -110,6 +116,9 @@ class Aviso(models.Model):
     corpo = models.TextField()
     data_postagem = models.DateTimeField(auto_now_add=True)
     data_evento = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.assunto}"
 
 
 class Reclamacao(models.Model):
@@ -128,3 +137,6 @@ class Reclamacao(models.Model):
 
     class Meta:
         verbose_name_plural = "Reclamacoes"
+
+    def __str__(self):
+        return f"{self.assunto}"
