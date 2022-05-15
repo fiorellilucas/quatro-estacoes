@@ -1,5 +1,7 @@
 {% extends 'quatroestacoes/base.html' %}
 
+{% load static %}
+
 {% block active_moradores %}active{% endblock active_moradores %}
 {% block titulo %}Alterar morador{% endblock titulo %}
 
@@ -11,5 +13,6 @@
             <button type="submit" class="btn-acao">Alterar informações</button>
         </form>
     </div>
-</div>
+    <script src="{% static 'quatroestacoes/moradores/moradores.js' %}" ></script>
+
 {% endblock conteudo %}
