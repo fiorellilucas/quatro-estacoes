@@ -204,4 +204,4 @@ class ReservasAddView(LoginRequiredMixin, CreateView):
     model = models.Reserva
     template_name = "quatroestacoes/reservas/adicionar.html"
     form_class = forms.ReservaForm
-    success_url = reverse_lazy("quatroestacoes:reservas_lista")
+    success_url = reverse_lazy("quatroestacoes:calendario")
