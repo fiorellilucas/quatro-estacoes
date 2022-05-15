@@ -7,8 +7,6 @@ from django.urls import reverse_lazy
 
 from . import models, forms
 
-SUCCESS_INDEX_URL = "/"
-
 
 class MyLoginView(LoginView):
 
@@ -121,12 +119,14 @@ class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 class CalendarioView(LoginRequiredMixin, TemplateView):
-
-    extra_context = {
-        "reservas": list(models.Reserva.objects.all().values()),
-        "moradores": list(models.Morador.objects.all().values("id", "first_name", "last_name"))
-    }
+    
     template_name = "quatroestacoes/calendario.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reservas"] = list(models.Reserva.objects.all().values())
+        context["moradores"] = list(models.Morador.objects.all().values("id", "first_name", "last_name"))      
+        return context
 
 
 class ReunioesListaView(LoginRequiredMixin, ListView):
