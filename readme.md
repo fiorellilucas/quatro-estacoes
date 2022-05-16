@@ -21,13 +21,6 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 - [x] Calendário
 - [ ] Reuniões
 
-## Equipe 3Tec
-
-- Gabriel Merlino
-- Khevyn Henrique
-- Lucas Fiorelli
-- Samira Floriano
-
 ## Tecnologias utilizadas
 
 - HTML
@@ -37,3 +30,10 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 - Django
 - Heroku
 - PostgreSQL
+
+## Equipe 3Tec
+
+- Gabriel Merlino
+- Khevyn Henrique
+- Lucas Fiorelli
+- Samira Floriano
