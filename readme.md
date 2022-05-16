@@ -1,11 +1,15 @@
 
 # TCC Quatro Estações
 
+#### Status: **EM DESENVOLVIMENTO**
+
+---
+
 Projeto desenvolvido como **TCC** para o curso **Técnico em Desenvolvimento de Sistemas**, **ETEC Fernando Prestes**, pela equipe **3Tec**.
 
 ---
 
-## Objetivo do projeto
+## Objetivo
 
 O projeto tem como principal objetivo providenciar aos moradores do **Condomínio Quatro Estações**, uma simples e intuitiva aplicação web que possibilita o monitoramento e interação com todas as atividades do condomínio.  
 
