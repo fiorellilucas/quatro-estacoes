@@ -199,9 +199,12 @@ class ReclamacoesDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class AvisosListaView(LoginRequiredMixin, ListView):
 
     model = models.Aviso
-    context = models.Aviso.objects.all()
-    context_object_name = "avisos"
     template_name = "quatroestacoes/avisos/lista.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["avisos"] = models.Aviso.objects.all().order_by("-data_postagem")
+        return context
 
 
 class AvisosInfoView(LoginRequiredMixin, DetailView):
