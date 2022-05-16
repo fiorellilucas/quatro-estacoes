@@ -166,6 +166,34 @@ class ReclamacoesAddView(LoginRequiredMixin, CreateView):
     template_name = "quatroestacoes/reclamacoes/adicionar.html"
     form_class = forms.ReclamacaoForm
     success_url = reverse_lazy("quatroestacoes:reclamacoes_lista")
+    
+    
+class ReclamacoesUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    
+    model = models.Reclamacao
+    template_name = "quatroestacoes/reclamacoes/alterar.html"
+    form_class = forms.ReclamacaoForm
+    success_url = reverse_lazy("quatroestacoes:reclamacoes_lista")
+    
+    login_url = "quatroestacoes:index"
+    redirect_field_name = None
+    
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+class ReclamacoesDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    
+    model = models.Reclamacao
+    template_name = "quatroestacoes/reclamacoes/deletar.html"
+    success_url = reverse_lazy("quatroestacoes:reclamacoes_lista")
+    context_object_name = "reclamacao"
+    
+    login_url = "quatroestacoes:index"
+    redirect_field_name = None
+    
+    def test_func(self):
+        return self.request.user.is_staff  
 
 
 class AvisosListaView(LoginRequiredMixin, ListView):
@@ -189,6 +217,34 @@ class AvisosAddView(LoginRequiredMixin, CreateView):
     template_name = "quatroestacoes/avisos/adicionar.html"
     form_class = forms.AvisoForm
     success_url = reverse_lazy("quatroestacoes:avisos_lista")
+    
+    
+class AvisosUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    
+    model = models.Aviso
+    template_name = "quatroestacoes/avisos/alterar.html"
+    form_class = forms.AvisoForm
+    success_url = reverse_lazy("quatroestacoes:avisos_lista")
+    
+    login_url = "quatroestacoes:index"
+    redirect_field_name = None
+    
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+class AvisosDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    
+    model = models.Aviso
+    template_name = "quatroestacoes/avisos/deletar.html"
+    success_url = reverse_lazy("quatroestacoes:avisos_lista")
+    context_object_name = "aviso"
+    
+    login_url = "quatroestacoes:index"
+    redirect_field_name = None
+    
+    def test_func(self):
+        return self.request.user.is_staff    
 
 
 class ReservasListaView(LoginRequiredMixin, ListView):

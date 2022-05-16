@@ -7,5 +7,11 @@
         <p><span>ASSUNTO: </span>{{ reclamacao.assunto }}</p>
         <p><span>CORPO: </span>{{ reclamacao.corpo }}</p>
         <p><span>DATA DE POSTAGEM: </span>{{ reclamacao.data_postagem }}</p>
+        {% if request.user.is_staff %}
+            <br>    
+            <a class="btn-acao" href="{% url 'quatroestacoes:reclamacoes_upd' reclamacao.id %}">Alterar</a> <a class="btn-deletar" href="{% url 'quatroestacoes:reclamacoes_del' reclamacao.id %}">Deletar</a>
+            <br>
+            <br>
+        {% endif %}
     </div>
 {% endblock conteudo %}

@@ -17,10 +17,14 @@ urlpatterns = [
     
     path("avisos/", views.AvisosListaView.as_view(), name="avisos_lista"),
     path("avisos/<int:pk>", views.AvisosInfoView.as_view(), name="avisos_info"),
+    path("avisos/<int:pk>/alterar", views.AvisosUpdView.as_view(), name="avisos_upd"),
+    path("avisos/<int:pk>/deletar", views.AvisosDelView.as_view(), name="avisos_del"),
     path("avisos/adicionar", views.AvisosAddView.as_view(), name="avisos_add"),
     
     path("reclamacoes/", views.ReclamacoesListaView.as_view(), name="reclamacoes_lista"),
     path("reclamacoes/<int:pk>", views.ReclamacoesInfoView.as_view(), name="reclamacoes_info"),
+    path("reclamacoes/<int:pk>/alterar", views.ReclamacoesUpdView.as_view(), name="reclamacoes_upd"),
+    path("reclamacoes/<int:pk>/deletar", views.ReclamacoesDelView.as_view(), name="reclamacoes_del"),    
     path("reclamacoes/adicionar", views.ReclamacoesAddView.as_view(), name="reclamacoes_add"),
     
     path("reunioes/", views.ReunioesListaView.as_view(), name="reunioes_lista"),

@@ -10,5 +10,11 @@
         {% if aviso.data_evento != None %}
             <p><span>DATA DO EVENTO: </span>{{ aviso.data_evento }}</p>
         {% endif %}
+        {% if request.user.is_staff %}
+            <br>    
+            <a class="btn-acao" href="{% url 'quatroestacoes:avisos_upd' aviso.id %}">Alterar</a> <a class="btn-deletar" href="{% url 'quatroestacoes:avisos_del' aviso.id %}">Deletar</a>
+            <br>
+            <br>
+        {% endif %}
     </div>
 {% endblock conteudo %}
