@@ -250,9 +250,12 @@ class AvisosDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class ReservasListaView(LoginRequiredMixin, ListView):
 
     model = models.Reserva
-    context = models.Reserva.objects.all()
-    context_object_name = "reservas"
     template_name = "quatroestacoes/reservas/lista.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reservas"] = models.Reserva.objects.filter(data__gte=timezone.localdate()).order_by("data")
+        return context
 
 
 class ReservasAddView(LoginRequiredMixin, CreateView):
