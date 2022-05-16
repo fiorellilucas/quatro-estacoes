@@ -377,12 +377,14 @@ span {
 }
 
 .container-form {
-  height: max-content;
+  height: fit-content;
+  max-height: 70%;
   width: 100%;
   max-width: 600px;
   background-color: rgba(186, 151, 64, 0.35);
   padding: 1em;
   margin: 1em;
+  overflow: scroll;
 }
 
 .container-form p {
