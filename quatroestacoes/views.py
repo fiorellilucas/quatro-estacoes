@@ -148,9 +148,12 @@ class ReunioesAddView(LoginRequiredMixin, CreateView):
 class ReclamacoesListaView(LoginRequiredMixin, ListView):
 
     model = models.Reclamacao
-    context = models.Reclamacao.objects.all()
-    context_object_name = "reclamacoes"
     template_name = "quatroestacoes/reclamacoes/lista.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reclamacoes"] = models.Reclamacao.objects.all().order_by("-data_postagem")
+        return context
 
 
 class ReclamacoesInfoView(LoginRequiredMixin, DetailView):
