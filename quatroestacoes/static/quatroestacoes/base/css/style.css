@@ -167,7 +167,7 @@ span {
 
 .info-salao, .info-comunicados {
   height: 85%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .container-avisos-home {
@@ -384,7 +384,7 @@ span {
   background-color: rgba(186, 151, 64, 0.35);
   padding: 1em;
   margin: 1em;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .container-form p {
@@ -396,7 +396,7 @@ span {
   background-color: rgba(186, 151, 64, 0.35);
   padding: 1em;
   margin: 1em;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 70%;
 }
 
