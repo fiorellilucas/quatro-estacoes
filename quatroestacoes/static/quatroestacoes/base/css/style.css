@@ -112,6 +112,7 @@ textarea {
   padding: 0.3em 0.5em;
   background-color: inherit;
   font-family: inherit;
+  transition: 0.2s;
 }
 
 .dropdown-content {
@@ -343,45 +344,6 @@ span {
 .container-form-morador p {
   text-align: left;
 }
-
-/* .container-lista-morador, .container-alterar-morador, .container-cadastrar-morador {
-    display: block;
-}
-
-.container-adicionar-morador {
-    margin: 0 0 2em;
-}
-
-.container-adicionar-morador a, .container-alterar-morador a, .container-cadastrar-morador input, .container-alterar-morador input {
-    background-color: rgba(186, 151, 64, 0.35);
-    border: none;
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.container-cadastrar-morador input, .container-alterar-morador input {
-    background-color: rgba(142, 81, 40, 0.6);
-    color: white;
-} 
-
-.container-adicionar-morador a {
-    padding: 10px;
-}
-
-.container-alterar-morador a {
-    margin: 20px 0;
-    padding: 10px;
-}
-
-.container-cadastrar-morador input, .container-alterar-morador input {
-    padding: 10px;
-}
-
-.container-form-morador {
-    background-color: rgba(186, 151, 64, 0.35);
-    padding: 1em;
-    margin: 0 0 2em;
-} */
 
 .container-cadastrar-morador,
 .container-alterar-morador {
