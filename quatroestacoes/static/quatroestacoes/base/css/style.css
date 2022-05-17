@@ -195,7 +195,13 @@ span {
   justify-content: space-around;
 }
 
-.aviso-home:hover {
+.item-lista {
+  border-bottom: 1px solid #694C00;
+  text-align: left;
+  padding: 1em;
+}
+
+.aviso-home:hover, .item-lista:hover {
   background-color: #a47937;
 }
 

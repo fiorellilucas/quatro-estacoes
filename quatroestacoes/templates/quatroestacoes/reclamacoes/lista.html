@@ -13,8 +13,8 @@
         {% if reclamacoes %}
             <ul style="padding: 0;">
             {% for reclamacao in reclamacoes %}
-                <li style="border-bottom: 1px solid #694C00; text-align: left">
-                    <a href="{% url 'quatroestacoes:reclamacoes_info' reclamacao.id %}">
+                <a href="{% url 'quatroestacoes:reclamacoes_info' reclamacao.id %}">
+                    <li class="item-lista">
                         {% if reclamacao.get_tipo_display == 'Reclamação' %}
                             <span style="color: rgb(220, 0, 0)">{{ reclamacao.get_tipo_display|upper }}</span><br>
                         {% else %}
@@ -24,9 +24,9 @@
                             {{ reclamacao.data_postagem }}<br><br>
                             <span style="font-size: 1.2em;">{{ reclamacao.assunto }}</span>
                         </span><br>
-                    </a>
-                    {{ reclamacao.corpo|truncatechars:70 }}<br><br>
-                </li>
+                        {{ reclamacao.corpo|truncatechars:70 }}<br><br>
+                      </li>
+                  </a>
                 <br>
             {% endfor %}
             </ul>
