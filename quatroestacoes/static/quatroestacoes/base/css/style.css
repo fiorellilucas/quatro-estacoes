@@ -72,6 +72,7 @@ textarea {
   padding: 0.3em 0.5em 0.05em;
   text-decoration: none;
   font-size: 14px;
+  transition: 0.2s;
 }
 
 .active {
@@ -193,12 +194,14 @@ span {
   height: 100%;
   border-right: 1px solid #694C00;
   justify-content: space-around;
+  transition: 0.2s;
 }
 
 .item-lista {
   border-bottom: 1px solid #694C00;
   text-align: left;
   padding: 1em;
+  transition: 0.2s;
 }
 
 .aviso-home:hover, .item-lista:hover {
