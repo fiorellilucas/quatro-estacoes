@@ -1,8 +1,19 @@
 from django.forms import ModelForm
-from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, SetPasswordForm, AuthenticationForm
 from django import forms
+from django.contrib.auth.forms import UsernameField
 
 from . import models
+
+
+class MyLoginForm(AuthenticationForm):
+    
+    username = UsernameField(widget=forms.TextInput(attrs={"autofocus": False, "placeholder": "Email"}))
+    password = forms.CharField(
+        label="Password",
+        strip=False,
+        widget=forms.PasswordInput(attrs={"autocomplete": "current-password", "placeholder": "Senha"}),
+    )
 
 
 class MoradorCreationForm(UserCreationForm):

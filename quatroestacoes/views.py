@@ -13,6 +13,7 @@ class MyLoginView(LoginView):
     template_name = "quatroestacoes/login.html"
     next_page = "quatroestacoes:index"
     redirect_authenticated_user = True
+    form_class = forms.MyLoginForm
 
 
 class MyLogoutView(LogoutView):
