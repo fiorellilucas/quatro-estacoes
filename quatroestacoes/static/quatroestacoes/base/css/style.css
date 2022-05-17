@@ -9,7 +9,7 @@ body {
   font-family: "Open Sans", sans-serif;
   height: 100%;
   background: linear-gradient(rgba(219, 204, 167, 1), rgba(255, 255, 255, 0.5)),
-  url("../img/fundo.png");
+    url("../img/fundo.png");
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -48,10 +48,6 @@ textarea {
   height: 60px;
   object-fit: scale-down;
 }
-
-/* .logo {
-  pointer-events: none;
-} */
 
 .topnav {
   overflow: hidden;
@@ -167,7 +163,8 @@ span {
   font-weight: bold;
 }
 
-.info-salao, .info-comunicados {
+.info-salao,
+.info-comunicados {
   height: 85%;
   overflow-y: auto;
 }
@@ -175,14 +172,14 @@ span {
 .container-avisos-home {
   display: flex;
   justify-content: center;
-  padding: 2em; 
-  text-align: left; 
+  padding: 2em;
+  text-align: left;
   height: 60%;
 }
 
 .container-salao-home {
-  padding: 2em; 
-  text-align: left; 
+  padding: 2em;
+  text-align: left;
   height: fit-content;
   margin: 0;
 }
@@ -193,19 +190,20 @@ span {
   padding: 0 1%;
   max-width: 30%;
   height: 100%;
-  border-right: 1px solid #694C00;
+  border-right: 1px solid #694c00;
   justify-content: space-around;
   transition: 0.2s;
 }
 
 .item-lista {
-  border-bottom: 1px solid #694C00;
+  border-bottom: 1px solid #694c00;
   text-align: left;
   padding: 1em;
   transition: 0.2s;
 }
 
-.aviso-home:hover, .item-lista:hover {
+.aviso-home:hover,
+.item-lista:hover {
   background-color: #a47937;
 }
 
@@ -374,7 +372,7 @@ span {
   max-height: 70%;
 }
 
-.btn-acao, 
+.btn-acao,
 .btn-deletar {
   padding: 0.8em;
   border: none;
