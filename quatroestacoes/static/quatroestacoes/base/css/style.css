@@ -49,9 +49,9 @@ textarea {
   object-fit: scale-down;
 }
 
-.logo {
+/* .logo {
   pointer-events: none;
-}
+} */
 
 .topnav {
   overflow: hidden;
@@ -132,7 +132,7 @@ textarea {
   text-align: left;
 }
 
-.topnav a:hover,
+.topnav a:not(.logo):hover,
 .dropdown:hover .dropbtn {
   background-color: rgba(186, 152, 64, 0.586);
   text-shadow: 2px 2px 2px #0000006b;

@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="container-logo topnav">
-        <a class="logo"><img class="img-logo" src="{% static 'quatroestacoes/base/img/logo.png' %}"/></a>
+        <a class="logo" href="{% url 'quatroestacoes:index' %}"><img class="img-logo" src="{% static 'quatroestacoes/base/img/logo.png' %}"/></a>
     </div>
     <div class="container">
         {% block conteudo %}
