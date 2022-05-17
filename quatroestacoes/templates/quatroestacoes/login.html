@@ -23,7 +23,11 @@
       href="https://fonts.googleapis.com/css2?family=Bitter:wght@100&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/x-icon" href="{% static 'quatroestacoes/base/img/favicon.png' %}">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'quatroestacoes/base/img/favicon.png' %}"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
@@ -57,43 +61,37 @@
       </div>
       <div class="content second-content">
         <div class="first-column">
-          <h2 class="title title-primary">Olá, Amigo!</h2>
-          <p class="description description-primary">
-            Insira seus dados pessoais
-          </p>
-          <p class="description description-primary">
-            e resolva os assuntos do condomínio conosco
-          </p>
-          <button id="signup" class="btn btn-primary">inscrever-se</button>
-        </div>
-        <div class="second-column">
           <img
             id="logoCondominio"
             src="{% static 'quatroestacoes/login/img/logo.png' %}"
             alt="logo condominio"
           />
-
-          <h3 class="title title-second">Entre com seu email</h3>
-          <form class="form" method="post">{% csrf_token %}
+        </div>
+        <div class="second-column">
+          <h3 class="title title-second">Entre com seu email e senha</h3>
+          <form class="form" method="post">
+            {% csrf_token %}
 
             <label class="label-input" for="">
-                <i class="far fa-envelope icon-modify"></i>
-                {{ form.username }}
+              <i class="far fa-envelope icon-modify"></i>
+              {{ form.username }}
             </label>
 
-           <label class="label-input" for="">
+            <label class="label-input" for="">
               <i class="fas fa-lock icon-modify"></i>
               {{ form.password }}
-            </label> 
+            </label>
 
-            <a class="password" href="{% url 'password_reset' %}">Esqueceu sua senha?</a>
-            <button type='submit' class="btn btn-second">Fazer Login</button>
+            <a class="password" href="{% url 'password_reset' %}"
+              >Esqueceu sua senha?</a
+            >
+            <button type="submit" class="btn btn-second">Fazer Login</button>
           </form>
         </div>
       </div>
     </div>
     <script>
-      document.getElementById("id_username").blur()
+      document.getElementById("id_username").blur();
     </script>
     <script src="{% static 'quatroestacoes/login/js/app.js' %}"></script>
   </body>

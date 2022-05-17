@@ -76,6 +76,7 @@ header h4 {
 
 #logoCondominio {
   padding: 0 0 20px;
+  max-width: 80%;
 }
 
 .logoCondo {
