@@ -16,13 +16,13 @@
                                     {{ aviso.data_postagem }}<br><br>
                                     <span style="font-size: 1.2em;">{{ aviso.assunto }}</span>
                                 </span><br>
+                                <p>{{ aviso.corpo|truncatechars:100 }}</p><br><br>
+                                {% if aviso.data_evento != None %}
+                                    <p>Acontecerá em <br><span>{{ aviso.data_evento }}</span></p>
+                                {% else %}
+                                    <p>Acontecerá em <br><span>Sem data marcada<span></p>
+                                {% endif %}
                             </a>
-                            <p>{{ aviso.corpo|truncatechars:100 }}</p><br><br>
-                            {% if aviso.data_evento != None %}
-                                <p>Acontecerá em <br><span>{{ aviso.data_evento }}</span></p>
-                            {% else %}
-                                <p>Acontecerá em <br><span>Sem data marcada<span></p>
-                            {% endif %}
                         </div>
                     {% endfor %}
             {% else %}
