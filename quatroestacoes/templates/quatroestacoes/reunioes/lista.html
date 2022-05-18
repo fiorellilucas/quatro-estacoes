@@ -13,10 +13,12 @@
         {% if reunioes %}
             <ul style="padding: 0;">
             {% for reuniao in reunioes %}
-                <li class="item-lista">
-                    <span>{{ reuniao.data }}</span><br>
-                    {{ reuniao.assunto }}
-                </li>
+                <a href="{% url 'quatroestacoes:reunioes_info' reuniao.id %}">
+                    <li class="item-lista">
+                        <span>{{ reuniao.data }}</span><br>
+                        {{ reuniao.assunto|truncatechars:30 }}
+                    </li>
+                </a>
             {% endfor %}
             </ul>
         {% else %}

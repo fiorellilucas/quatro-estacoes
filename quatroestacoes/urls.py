@@ -28,6 +28,9 @@ urlpatterns = [
     path("reclamacoes/adicionar", views.ReclamacoesAddView.as_view(), name="reclamacoes_add"),
     
     path("reunioes/", views.ReunioesListaView.as_view(), name="reunioes_lista"),
+    path("reunioes/<int:pk>", views.ReunioesInfoView.as_view(), name="reunioes_info"),
+    path("reunioes/<int:pk>/alterar", views.ReunioesUpdView.as_view(), name="reunioes_upd"),
+    path("reunioes/<int:pk>/deletar", views.ReunioesDelView.as_view(), name="reunioes_del"),
     path("reunioes/adicionar", views.ReunioesAddView.as_view(), name="reunioes_add"),
     
     path("reservas/", views.ReservasListaView.as_view(), name="reservas_lista"),

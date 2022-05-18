@@ -141,12 +141,46 @@ class ReunioesListaView(LoginRequiredMixin, ListView):
         return context
 
 
+class ReunioesInfoView(LoginRequiredMixin, DetailView):
+    model = models.Reuniao
+    template_name = "quatroestacoes/reunioes/info.html"
+    context_object_name = "reuniao"
+
+
 class ReunioesAddView(LoginRequiredMixin, CreateView):
 
     model = models.Reuniao
     template_name = "quatroestacoes/reunioes/adicionar.html"
     form_class = forms.ReuniaoForm
     success_url = reverse_lazy("quatroestacoes:reunioes_lista")
+
+
+class ReunioesUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    
+    model = models.Reuniao
+    template_name = "quatroestacoes/reunioes/alterar.html"
+    form_class = forms.ReuniaoForm
+    success_url = reverse_lazy("quatroestacoes:reunioes_lista")
+    
+    login_url = "quatroestacoes:index"
+    redirect_field_name = None
+    
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+class ReunioesDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    
+    model = models.Reuniao
+    template_name = "quatroestacoes/reunioes/deletar.html"
+    success_url = reverse_lazy("quatroestacoes:reunioes_lista")
+    context_object_name = "reuniao"
+    
+    login_url = "quatroestacoes:index"
+    redirect_field_name = None
+    
+    def test_func(self):
+        return self.request.user.is_staff    
 
 
 class ReclamacoesListaView(LoginRequiredMixin, ListView):
