@@ -1,9 +1,27 @@
-{% if reunioes %}
-    <ul>
-    {% for reuniao in reunioes %}
-        <li>{{ reuniao.data }} - {{ reuniao.assunto }}</li>
-    </ul>
-    {% endfor %}
-{% else %}
-    <p>nenhuma reunião disponível</p>
-{% endif %}
+{% extends 'quatroestacoes/base.html' %}
+
+{% block active_reunioes %}active{% endblock active_reunioes %}
+{% block titulo %}Reuniões{% endblock titulo %}
+
+{% block conteudo %}
+<div class="container-pagina-outros">
+    <div class="container-criar">
+        <a href="{% url 'quatroestacoes:reunioes_add' %}" class="btn-acao">Criar reunião</a>
+        <br><br>
+    </div>
+    <div class="container-lista">
+        {% if reunioes %}
+            <ul style="padding: 0;">
+            {% for reuniao in reunioes %}
+                <li class="item-lista">
+                    <span>{{ reuniao.data }}</span><br>
+                    {{ reuniao.assunto }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhuma reunião disponível</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock conteudo %}

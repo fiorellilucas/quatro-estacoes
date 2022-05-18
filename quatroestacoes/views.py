@@ -133,9 +133,12 @@ class CalendarioView(LoginRequiredMixin, TemplateView):
 class ReunioesListaView(LoginRequiredMixin, ListView):
 
     model = models.Reuniao
-    context = models.Reuniao.objects.all()
-    context_object_name = "reunioes"
     template_name = "quatroestacoes/reunioes/lista.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reunioes"] = models.Reuniao.objects.filter(data__gte=timezone.localdate()).order_by("data")
+        return context
 
 
 class ReunioesAddView(LoginRequiredMixin, CreateView):

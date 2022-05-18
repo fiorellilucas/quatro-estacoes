@@ -1,4 +1,15 @@
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Criar nova reunião">
-</form>
+{% extends 'quatroestacoes/base.html' %}
+
+{% block active_reunioes %}active{% endblock active_reunioes %}
+{% block titulo %}Reuniões{% endblock titulo %}
+
+{% block conteudo %}
+<div class="container-form">
+    <form method="post">{% csrf_token %}
+        <h3>CRIAR REUNIÃO</h3>
+        <span>{{ form.as_p }}</span>
+        <button class="btn-acao" type="submit">Criar reunião</button>
+    </form>
+</div>
+
+{% endblock conteudo %}
