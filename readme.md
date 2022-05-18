@@ -23,7 +23,7 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 - [x] Reclamações e sugestões
 - [x] Reservas do salão de festas
 - [x] Calendário
-- [ ] Reuniões
+- [x] Reuniões
 
 ## Tecnologias utilizadas
 
