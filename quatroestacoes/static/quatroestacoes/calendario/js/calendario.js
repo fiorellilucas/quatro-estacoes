@@ -1,48 +1,22 @@
 const date = new Date();
 
-let todasReservas = () => {
-  let reservasBruto = JSON.parse(document.getElementById("reservas").innerText);
-  let moradores = JSON.parse(document.getElementById("moradores").innerText);
+let todosEventos = () => {
+  let eventos = JSON.parse(document.getElementById("eventos").innerText)
 
-  let reservas = [];
+  for (let i = 0; i < eventos.length; i++) {
+    let evento = eventos[i];
 
-  for (let i = 0; i < reservasBruto.length; i++) {
-    let reserva = reservasBruto[i];
+    let dataEvento = evento.data;
 
-    let dataReserva = reserva.data;
-    let moradorIdReserva = reserva.morador_id;
-
-    let ano = dataReserva.slice(0, 4);
-    let mes = dataReserva.slice(5, 7);
-    let dia = dataReserva.slice(8, 10);
-
-    dataReserva = new Date(ano, mes - 1, dia);
-
-    reserva = { data: dataReserva, morador_id: moradorIdReserva };
-    reservas.push(reserva);
+    dataEvento = new Date(`${dataEvento} 00:00`);
+    evento.data = dataEvento
   }
 
-  for (let i = 0; i < moradores.length; i++) {
-    let morador = moradores[i];
-
-    let nome = morador.first_name;
-    let sobrenome = morador.last_name;
-    let morador_id = morador.id;
-
-    for (j = 0; j < reservas.length; j++) {
-      let reserva = reservas[j];
-      if (reserva.morador_id == morador_id) {
-        reserva.nome = nome;
-        reserva.sobrenome = sobrenome;
-      }
-    }
-  }
-
-  return reservas;
+  return eventos;
 };
 
 let gerarMes = (anoInteiro, mes) => {
-  let reservas = todasReservas();
+  let eventos = todosEventos()
 
   let inicioMes = new Date(anoInteiro, mes);
   let fimMes = new Date(anoInteiro, mes + 1, 0);
@@ -80,13 +54,13 @@ let gerarMes = (anoInteiro, mes) => {
     }
   }
 
-  // adiciona as reservas nos dias dos meses
+  // adiciona os eventos nos dias dos meses
   for (i = 0; i < diasDoMes.length; i++) {
     let dia = diasDoMes[i];
-    for (j = 0; j < reservas.length; j++) {
-      let reserva = reservas[j];
-      if (reserva.data.getTime() == dia.dia.getTime()) {
-        dia.evento = reserva;
+    for (j = 0; j < eventos.length; j++) {
+      let evento = eventos[j];
+      if (evento.data.getDate() == dia.dia.getDate() && evento.data.getMonth() == dia.dia.getMonth() && evento.data.getFullYear() == dia.dia.getFullYear()) {
+        dia.evento = evento;
       }
     }
   }
@@ -137,8 +111,26 @@ let renderCalendar = () => {
           days += `<div class="normal" onclick="${paginaReservas}">${dia.getDate()}</div>`;
         }
       }
-    } else {
-      days += `<div class="reserva">${dia.getDate()}</div>`;
+    } else if (diasMes[i].evento.tipo_evento == "reserva") {
+      if (
+        dia.getDate() == dataHoje.getDate() &&
+        dia.getFullYear() == dataHoje.getFullYear() &&
+        dia.getMonth() == dataHoje.getMonth()
+      ) {
+        days += `<div class="hoje reserva" onclick="${paginaReservas}">${dia.getDate()}</div>`;
+      } else {
+        days += `<div class="normal reserva" onclick="${paginaReservas}">${dia.getDate()}</div>`;
+      }
+    } else if (diasMes[i].evento.tipo_evento == "reuniao") {
+      if (
+        dia.getDate() == dataHoje.getDate() &&
+        dia.getFullYear() == dataHoje.getFullYear() &&
+        dia.getMonth() == dataHoje.getMonth()
+      ) {
+        days += `<div class="hoje reuniao" onclick="${paginaReservas}">${dia.getDate()}</div>`;
+      } else {
+        days += `<div class="normal reuniao" onclick="${paginaReservas}">${dia.getDate()}</div>`;
+      }
     }
   }
 

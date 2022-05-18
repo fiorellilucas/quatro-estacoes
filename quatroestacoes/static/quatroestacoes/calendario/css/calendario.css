@@ -85,7 +85,6 @@
 }
 
 .hoje {
-  background-color: #e3ca8d;
   outline: 2px solid black;
 }
 
@@ -94,11 +93,19 @@
 }
 
 .reserva {
-  background-color: #7afa00;
+  background-color: orange;
 }
 
 .reserva:hover {
-  background-color: #63cb00 !important;
+  background-color: orangered;
+}
+
+.reuniao {
+  background-color: lightskyblue;
+}
+
+.reuniao:hover {
+  background-color: deepskyblue;
 }
 
 .date {

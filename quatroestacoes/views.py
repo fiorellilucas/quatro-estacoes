@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
+from itertools import chain
+
 from . import models, forms
 
 
@@ -50,11 +52,39 @@ class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "quatroestacoes/index.html"
 
     def get_context_data(self, **kwargs):
-
         context = super(IndexView, self).get_context_data(**kwargs)
         context["avisos"] = models.Aviso.objects.all().order_by("-data_postagem")[:3]
         context["reservas"] = models.Reserva.objects.filter(data__gte=timezone.localdate()).order_by("data")[:5]
         context["data_atual"] = timezone.localdate()
+        return context
+
+
+class CalendarioView(LoginRequiredMixin, TemplateView):
+    
+    template_name = "quatroestacoes/calendario.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        reservas = list(models.Reserva.objects.filter(data__gte=timezone.localdate()).values())
+        reunioes = list(models.Reuniao.objects.filter(data__gte=timezone.localtime()).values())
+        
+        for reuniao in reunioes:
+            reuniao["data"] = timezone.localtime(reuniao["data"]).date()
+            reuniao["tipo_evento"] = "reuniao"
+            
+        for reserva in reservas:
+            morador = models.Morador.objects.get(pk=reserva["morador_id"])
+            reserva["morador_nome"] = morador.first_name
+            reserva["morador_sobrenome"] = morador.last_name
+            reserva["tipo_evento"] = "reserva"
+
+            
+        eventos = list(chain(reunioes, reservas))
+        eventos = sorted(eventos, key=lambda t: t["data"])
+        
+        context["eventos"] = eventos
+                
         return context
 
 
@@ -117,17 +147,6 @@ class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.is_staff
-
-
-class CalendarioView(LoginRequiredMixin, TemplateView):
-    
-    template_name = "quatroestacoes/calendario.html"
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["reservas"] = list(models.Reserva.objects.all().values())
-        context["moradores"] = list(models.Morador.objects.all().values("id", "first_name", "last_name"))      
-        return context
 
 
 class ReunioesListaView(LoginRequiredMixin, ListView):
