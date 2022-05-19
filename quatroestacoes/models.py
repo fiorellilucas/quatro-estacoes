@@ -94,7 +94,7 @@ class Reserva(models.Model):
 
     morador = models.ForeignKey(
         Morador, on_delete=models.CASCADE, verbose_name="ID do morador")
-    data = models.DateField()
+    data = models.DateField(unique=True)
 
     def __str__(self):
         return f"{self.data}"
