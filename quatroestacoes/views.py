@@ -166,12 +166,15 @@ class ReunioesInfoView(LoginRequiredMixin, DetailView):
     context_object_name = "reuniao"
 
 
-class ReunioesAddView(LoginRequiredMixin, CreateView):
+class ReunioesAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     model = models.Reuniao
     template_name = "quatroestacoes/reunioes/adicionar.html"
     form_class = forms.ReuniaoForm
     success_url = reverse_lazy("quatroestacoes:reunioes_lista")
+    
+    def test_func(self):
+        return self.request.user.is_staff
 
 
 class ReunioesUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -274,12 +277,15 @@ class AvisosInfoView(LoginRequiredMixin, DetailView):
     context_object_name = "aviso"
 
 
-class AvisosAddView(LoginRequiredMixin, CreateView):
+class AvisosAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     model = models.Aviso
     template_name = "quatroestacoes/avisos/adicionar.html"
     form_class = forms.AvisoForm
     success_url = reverse_lazy("quatroestacoes:avisos_lista")
+    
+    def test_func(self):
+        return self.request.user.is_staff
     
     
 class AvisosUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

@@ -5,10 +5,12 @@
 
 {% block conteudo %}
 <div class="container-pagina-outros">
-    <div class="container-criar">
-        <a href="{% url 'quatroestacoes:avisos_add' %}" class="btn-acao">Criar aviso</a>
-        <br><br>
-    </div>
+    {% if request.user.is_staff %}
+        <div class="container-criar">
+            <a href="{% url 'quatroestacoes:avisos_add' %}" class="btn-acao">Criar aviso</a>
+            <br><br>
+        </div>
+    {% endif %}
     <div class="container-lista">
         {% if avisos %}
             <ul style="padding: 0;">
