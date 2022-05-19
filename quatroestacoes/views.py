@@ -66,8 +66,8 @@ class CalendarioView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
-        reservas = list(models.Reserva.objects.filter(data__gte=timezone.localdate()).values())
-        reunioes = list(models.Reuniao.objects.filter(data__gte=timezone.localtime()).values())
+        reservas = list(models.Reserva.objects.all().values())
+        reunioes = list(models.Reuniao.objects.all().values())
         
         for reuniao in reunioes:
             reuniao["data"] = timezone.localtime(reuniao["data"]).date()
