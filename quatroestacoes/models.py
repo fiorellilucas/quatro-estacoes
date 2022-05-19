@@ -102,7 +102,7 @@ class Reserva(models.Model):
 
 class Reuniao(models.Model):
 
-    data = models.DateTimeField(verbose_name="Data e horário da reunião")
+    data = models.DateTimeField(verbose_name="Data e horário da reunião", unique=True)
     assunto = models.CharField(max_length=300)
 
     class Meta:
