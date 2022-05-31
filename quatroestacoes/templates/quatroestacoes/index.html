@@ -10,15 +10,15 @@
             <div class="container-avisos-home">
                 {% if avisos %}
                     {% for aviso in avisos %}
-                        <div class="aviso-home">
+                        <div class="aviso-home" id="aviso-home-{{ forloop.counter }}">
                             <a href="{% url 'quatroestacoes:avisos_info' aviso.id %}">
                                 <span>
-                                    {{ aviso.data_postagem }}<br><br>
+                                    {{ aviso.data_postagem|date:"d/m/Y" }}<br><br>
                                     <span style="font-size: 1.2em;">{{ aviso.assunto }}</span>
                                 </span><br>
-                                <p>{{ aviso.corpo|truncatechars:100 }}</p><br><br>
+                                <p>{{ aviso.corpo|truncatechars:40 }}</p><br><br>
                                 {% if aviso.data_evento != None %}
-                                    <p>Acontecerá em <br><span>{{ aviso.data_evento }}</span></p>
+                                    <p>Acontecerá em <br><span>{{ aviso.data_evento|date:"d/m/Y" }}</span></p>
                                 {% else %}
                                     <p>Acontecerá em <br><span>Sem data marcada<span></p>
                                 {% endif %}
@@ -50,8 +50,4 @@
             {% endif %}
         </div>
     </div>
-    {% comment %} GAMBIARRA PARA COLOCAR LINHA NO PRIMEIRO AVISO {% endcomment %}
-    <script>
-        document.getElementsByClassName("aviso-home")[0].style.borderLeft = "1px solid #694C00"
-    </script>
 {% endblock %}

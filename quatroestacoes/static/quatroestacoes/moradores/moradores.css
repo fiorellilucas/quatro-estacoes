@@ -2,13 +2,13 @@
     display: flex;
     width: 100%;
     text-align: center;
-    justify-content: space-between;
-    
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .container-bloco {
     width: 300px;
-    margin: 0 1em;
+    margin: 1em 1em;
     padding: 0 1em;
     display: block;
     height: 500px;
