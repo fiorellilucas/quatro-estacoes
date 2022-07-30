@@ -62,7 +62,7 @@
     {% for aviso in avisos %}
     <li class="list-group-item card-aviso">
       <div class="card-body">
-        <h5 class="card-title">{{ aviso.assunto }}</h5>
+        <h3 class="card-title">{{ aviso.assunto }}</h3>
         <p class="card-text">{{ aviso.corpo|truncatechars:40 }}</p>
         {% if aviso.data_evento != None %}
           <p>Acontecerá em {{ aviso.data_evento|date:"d/m/Y" }}</p>

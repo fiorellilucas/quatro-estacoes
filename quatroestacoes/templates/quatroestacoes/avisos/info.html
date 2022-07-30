@@ -1,20 +1,18 @@
-{% extends 'quatroestacoes/base.html' %}
-{% block titulo %}Aviso{% endblock titulo %}
+{% extends 'quatroestacoes/base.html' %} {% block titulo %}Aviso{% endblock titulo %} {% block conteudo %}
 
-{% block conteudo %}
-    <div class="container-form">
-        <h3>AVISO</h3>
-        <p><span>ASSUNTO: </span>{{ aviso.assunto }}</p>
-        <p><span>CORPO: </span>{{ aviso.corpo }}</p>
-        <p><span>DATA DE POSTAGEM: </span>{{ aviso.data_postagem }}</p>
-        {% if aviso.data_evento != None %}
-            <p><span>DATA DO EVENTO: </span>{{ aviso.data_evento }}</p>
-        {% endif %}
-        {% if request.user.is_staff %}
-            <br>    
-            <a class="btn-acao" href="{% url 'quatroestacoes:avisos_upd' aviso.id %}">Alterar</a> <a class="btn-deletar" href="{% url 'quatroestacoes:avisos_del' aviso.id %}">Deletar</a>
-            <br>
-            <br>
-        {% endif %}
-    </div>
+<div class="card">
+  <div class="card-body card-aviso">
+    <h3 class="card-title">{{ aviso.assunto }}</h3>
+    {% if aviso.data_evento != None %}
+    <p>{{ aviso.data_evento|date:"d/m/Y" }}</p>
+    {% endif %}
+    <hr>
+    <p class="card-text">{{ aviso.corpo }}</p>
+    <hr>
+    <p>DATA DE POSTAGEM: {{ aviso.data_postagem|date:"d/m/Y" }}</p>
+    
+  </div>
+</div>
+  
+
 {% endblock conteudo %}
