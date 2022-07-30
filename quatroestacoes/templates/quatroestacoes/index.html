@@ -53,7 +53,7 @@
 {% endblock %} {% endcomment %}
 
 {% block conteudo %}
-<div class="card">
+<div class="card mb-2">
   <div class="card-header text-center">
     <h1 class="display-6">QUADRO DE AVISOS</h1>
   </div>
@@ -75,6 +75,27 @@
   {% else %}
   Nenhum aviso disponível
   {% endif %}
+</div>
 
+<div class="card">
+  <div class="card-header text-center">
+    <h1 class="display-6">SALÃO DE FESTAS</h1>
+  </div>
+  {% if reservas %}
+  <ul class="list-group list-group-flush">
+    {% for reserva in reservas %}
+      {% if reserva.data >= data_atual %}
+        <li class="list-group-item card-aviso">
+          <div class="card-body">
+            <h5 class="card-title">{{ reserva.data }}</h5>
+            <h6 class="card-text">{{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</h6>
+          </div>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% else %}
+  Nenhuma reserva disponível
+  {% endif %}
 </div>
 {% endblock conteudo %}

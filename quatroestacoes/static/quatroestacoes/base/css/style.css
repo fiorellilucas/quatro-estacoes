@@ -25,3 +25,7 @@ body {
 .card-header {
   background-color: #ffe7a2;
 }
+
+.card {
+  margin-bottom: 1vh;
+}
