@@ -6,10 +6,14 @@ body {
   padding: 1vh;
 }
 
-.navbar, .dropdown-menu {
+.navbar {
   background-color: #ffe495;
 }
 
 .logo-navbar {
   width: 6vh;
+}
+
+.dropdown-menu {
+  background-color: #fff1c9;
 }
