@@ -6,7 +6,7 @@ body {
   padding: 1vh;
 }
 
-.navbar {
+.navbar, .dropdown-menu {
   background-color: #ffe495;
 }
 
