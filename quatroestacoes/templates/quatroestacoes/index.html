@@ -3,7 +3,7 @@
 
 {% block active_home %}active{% endblock active_home %}
 
-{% block conteudo %}
+{% comment %} {% block conteudo %}
     <div class="container-home">
         <div class="info-comunicados">
             <h3>QUADRO DE AVISOS</h3>
@@ -50,4 +50,31 @@
             {% endif %}
         </div>
     </div>
-{% endblock %}
+{% endblock %} {% endcomment %}
+
+{% block conteudo %}
+<div class="card">
+  <div class="card-header text-center">
+    <h1 class="display-6">QUADRO DE AVISOS</h1>
+  </div>
+  {% if avisos %}
+  <ul class="list-group list-group-flush">
+    {% for aviso in avisos %}
+    <li class="list-group-item card-aviso">
+      <div class="card-body">
+        <h5 class="card-title">{{ aviso.assunto }}</h5>
+        <p class="card-text">{{ aviso.corpo|truncatechars:40 }}</p>
+        {% if aviso.data_evento != None %}
+          <p>Acontecerá em {{ aviso.data_evento|date:"d/m/Y" }}</p>
+        {% endif %}
+        <a class="stretched-link" href="{% url 'quatroestacoes:avisos_info' aviso.id %}"></a>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  Nenhum aviso disponível
+  {% endif %}
+
+</div>
+{% endblock conteudo %}
