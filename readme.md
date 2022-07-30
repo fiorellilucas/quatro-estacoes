@@ -32,6 +32,7 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 
 - HTML
 - CSS
+- Bootstrap
 - JavaScript
 - Python
 - Django
