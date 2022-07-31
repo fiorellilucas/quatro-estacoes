@@ -29,3 +29,39 @@ body {
 .card {
   margin-bottom: 1vh;
 }
+
+#nav-bloco-a-tab.active {
+  background-color: rgba(255, 0, 191, 0.20);
+}
+
+#nav-bloco-b-tab.active {
+  background-color: rgba(255, 247, 0, 0.25);
+}
+
+#nav-bloco-c-tab.active {
+  background-color: rgba(0, 255, 4, 0.20);
+}
+
+#nav-bloco-d-tab.active {
+  background-color: rgba(0, 0, 255, 0.20);
+}
+
+#nav-bloco-a-tab, #nav-bloco-b-tab, #nav-bloco-c-tab, #nav-bloco-d-tab {
+  color: black;
+}
+
+.card-morador-a {
+  background-color: rgba(255, 0, 191, 0.15);
+}
+
+.card-morador-b {
+  background-color: rgba(255, 247, 0, 0.15);
+}
+
+.card-morador-c {
+  background-color: rgba(0, 255, 4, 0.15);
+}
+
+.card-morador-d {
+  background-color: rgba(0, 0, 255, 0.15);
+}
