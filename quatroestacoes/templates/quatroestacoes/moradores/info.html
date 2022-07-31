@@ -5,26 +5,17 @@
 
 {% block conteudo %}
 {% if morador %}
-        <div class="container-form">
-            <h3>INFORMAÇÕES DO MORADOR</h3>
-            <p><span>Nome:</span> {{ morador.first_name }}<br></p>
-            <p><span>Sobrenome:</span> {{ morador.last_name }}<br></p>
-            <p><span>Bloco:</span> {{ morador.bloco }}<br></h3>
-            <p><span>Apartamento:</span> {{ morador.apartamento }}<br></p>
-            <p><span>Interfone:</span> {{ morador.interfone }}<br></p>
-            {% if request.user.is_staff %}
-                <p><span>Celular:</span> {{ morador.celular }}<br></p>
-                <p><span>Email:</span> {{ morador.email }}<br></p>
-            {% endif %}
-
-        {% if request.user.is_staff %}
-            <br>    
-            <a class="btn-acao" href="{% url 'quatroestacoes:moradores_upd' morador.id %}">Alterar</a> <a class="btn-deletar" href="{% url 'quatroestacoes:moradores_del' morador.id %}">Deletar</a>
-            <br>
-            <br>
-        {% endif %}
-        </div>
+<div class="card">
+  <div class="card-header">
+    <h1 class="mb-0 p-2 ps-1"><strong>{{ morador.first_name }} {{ morador.last_name }}</strong></h1>
+  </div>
+  <ul class="list-group list-grou-flush">
+    <li class="list-group-item p-3">BLOCO: <strong>{{ morador.bloco }}</strong></li>
+    <li class="list-group-item p-3">APARTAMENTO: <strong>{{ morador.apartamento }}</strong></li>
+    <li class="list-group-item p-3">INTERFONE: <strong>{{ morador.interfone }}</strong></li>
+  </ul>
+</div>
 {% else %}
-    <p>morador indisponível</p>
-{% endif %}
+<p>Morador indisponível</p>
+{% endif %} 
 {% endblock conteudo %}
