@@ -84,14 +84,12 @@
   {% if reservas %}
   <ul class="list-group list-group-flush">
     {% for reserva in reservas %}
-      {% if reserva.data >= data_atual %}
-        <li class="list-group-item card-aviso">
-          <div class="card-body">
-            <h5 class="card-title">{{ reserva.data }}</h5>
-            <h6 class="card-text">{{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</h6>
-          </div>
-        </li>
-      {% endif %}
+      <li class="list-group-item card-aviso">
+        <div class="card-body">
+          <h5 class="card-title">{{ reserva.data }}</h5>
+          <h6 class="card-text">{{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</h6>
+        </div>
+      </li>
     {% endfor %}
   </ul>
   {% else %}

@@ -55,7 +55,6 @@ class IndexView(LoginRequiredMixin, TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context["avisos"] = models.Aviso.objects.all().order_by("-data_postagem")[:3]
         context["reservas"] = models.Reserva.objects.filter(data__gte=timezone.localdate()).order_by("data")[:5]
-        context["data_atual"] = timezone.localdate()
         return context
 
 
