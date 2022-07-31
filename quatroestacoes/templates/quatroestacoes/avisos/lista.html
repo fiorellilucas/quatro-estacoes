@@ -4,34 +4,27 @@
 {% block titulo %}Avisos{% endblock titulo %}
 
 {% block conteudo %}
-<div class="container-pagina-outros">
-    {% if request.user.is_staff %}
-        <div class="container-criar">
-            <a href="{% url 'quatroestacoes:avisos_add' %}" class="btn-acao">Criar aviso</a>
-            <br><br>
-        </div>
-    {% endif %}
-    <div class="container-lista">
-        {% if avisos %}
-            <ul style="padding: 0;">
-                {% for aviso in avisos %}
-                    <a href="{% url 'quatroestacoes:avisos_info' aviso.id %}">
-                        <li class="item-lista">
-                            <span>
-                                {{ aviso.data_postagem }}<br><br>
-                                <span style="font-size: 1.2em;">{{ aviso.assunto }}</span>
-                            </span><br>
-                            {{ aviso.corpo|truncatechars:70 }}<br><br>
-                            {% if aviso.data_evento != None %}
-                                Acontecerá em <span>{{ aviso.data_evento }}</span><br><br>
-                            {% endif %}
-                        </li>
-                    </a>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Nenhum aviso disponível</p>
+<div class="card mb-2">
+  <div class="card-header text-center">
+    <h1 class="display-6">AVISOS</h1>
+  </div>
+  {% if avisos %}
+  <ul class="list-group list-group-flush">
+    {% for aviso in avisos %}
+    <li class="list-group-item card-aviso">
+      <div class="card-body">
+        <h3 class="card-title">{{ aviso.assunto }}</h3>
+        <p class="card-text">{{ aviso.corpo|truncatechars:40 }}</p>
+        {% if aviso.data_evento != None %}
+          <p>Acontecerá em {{ aviso.data_evento|date:"d/m/Y" }}</p>
         {% endif %}
-    </div>
+        <a class="stretched-link" href="{% url 'quatroestacoes:avisos_info' aviso.id %}"></a>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  Nenhum aviso disponível
+  {% endif %}
 </div>
 {% endblock conteudo %}
