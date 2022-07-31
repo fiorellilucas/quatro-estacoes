@@ -1,17 +1,16 @@
 {% extends 'quatroestacoes/base.html' %}
+
 {% block titulo %}Reclamação{% endblock titulo %}
 
 {% block conteudo %}
-    <div class="container-form">
-        <h3>{{ reclamacao.get_tipo_display|upper }}</h3>
-        <p><span>ASSUNTO: </span>{{ reclamacao.assunto }}</p>
-        <p><span>CORPO: </span>{{ reclamacao.corpo }}</p>
-        <p><span>DATA DE POSTAGEM: </span>{{ reclamacao.data_postagem }}</p>
-        {% if request.user.is_staff %}
-            <br>    
-            <a class="btn-acao" href="{% url 'quatroestacoes:reclamacoes_upd' reclamacao.id %}">Alterar</a> <a class="btn-deletar" href="{% url 'quatroestacoes:reclamacoes_del' reclamacao.id %}">Deletar</a>
-            <br>
-            <br>
-        {% endif %}
-    </div>
+<div class="card">
+  <div class="card-body card-aviso">
+    <h3 class="card-title">{{ reclamacao.assunto }}</h3>
+    <p>{{ reclamacao.get_tipo_display|upper }}</p>
+    <hr>
+    <p class="card-text">{{ reclamacao.corpo }}</p>
+    <hr>
+    <p>DATA DE POSTAGEM: {{ reclamacao.data_postagem|date:"d/m/Y" }}</p>
+  </div>
+</div>
 {% endblock conteudo %}
