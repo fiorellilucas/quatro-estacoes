@@ -4,34 +4,29 @@
 {% block titulo %}Reclamações{% endblock titulo %}
 
 {% block conteudo %}
-<div class="container-pagina-outros">
-    <div class="container-criar">
-        <a href="{% url 'quatroestacoes:reclamacoes_add' %}" class="btn-acao">Criar reclamação</a>
-        <br><br>
-    </div>
-    <div class="container-lista">
-        {% if reclamacoes %}
-            <ul style="padding: 0;">
-            {% for reclamacao in reclamacoes %}
-                <a href="{% url 'quatroestacoes:reclamacoes_info' reclamacao.id %}">
-                    <li class="item-lista">
-                        {% if reclamacao.get_tipo_display == 'Reclamação' %}
-                            <span style="color: rgb(220, 0, 0)">{{ reclamacao.get_tipo_display|upper }}</span><br>
-                        {% else %}
-                            <span style="color: rgb(0, 140, 0)">{{ reclamacao.get_tipo_display|upper }}</span><br>
-                        {% endif %}
-                        <span>
-                            {{ reclamacao.data_postagem }}<br><br>
-                            <span style="font-size: 1.2em;">{{ reclamacao.assunto }}</span>
-                        </span><br>
-                        {{ reclamacao.corpo|truncatechars:70 }}<br><br>
-                      </li>
-                  </a>
-            {% endfor %}
-            </ul>
+<div class="card mb-2">
+  <div class="card-header text-center">
+    <h3 class="mt-2">RECLAMAÇÕES E SUGESTÕES</h3>
+  </div>
+  {% if reclamacoes %}
+  <ul class="list-group list-group-flush">
+    {% for reclamacao in reclamacoes %}
+    <li class="list-group-item card-aviso">
+      <div class="card-body">
+        {% if reclamacao.get_tipo_display == 'Reclamação' %}
+          <span style="color: rgb(220, 0, 0)">{{ reclamacao.get_tipo_display|upper }}</span><br>
         {% else %}
-            <p>Nenhuma reclamação ou sugestão disponível</p>
+          <span style="color: rgb(0, 140, 0)">{{ reclamacao.get_tipo_display|upper }}</span><br>
         {% endif %}
-    </div>
+        <h3 class="card-title">{{ reclamacao.assunto }}</h3>
+        <p class="card-text">{{ reclamacao.corpo|truncatechars:40 }}</p>
+      </div>
+      <a class="stretched-link" href="{% url 'quatroestacoes:reclamacoes_info' reclamacao.id %}"></a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  Nenhuma reclamação ou sugestão disponível
+  {% endif %}
 </div>
 {% endblock conteudo %}
