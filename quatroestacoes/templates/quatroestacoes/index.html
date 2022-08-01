@@ -3,55 +3,6 @@
 
 {% block active_home %}active{% endblock active_home %}
 
-{% comment %} {% block conteudo %}
-    <div class="container-home">
-        <div class="info-comunicados">
-            <h3>QUADRO DE AVISOS</h3>
-            <div class="container-avisos-home">
-                {% if avisos %}
-                    {% for aviso in avisos %}
-                        <div class="aviso-home" id="aviso-home-{{ forloop.counter }}">
-                            <a href="{% url 'quatroestacoes:avisos_info' aviso.id %}">
-                                <span>
-                                    {{ aviso.data_postagem|date:"d/m/Y" }}<br><br>
-                                    <span style="font-size: 1.2em;">{{ aviso.assunto }}</span>
-                                </span><br>
-                                <p>{{ aviso.corpo|truncatechars:40 }}</p><br><br>
-                                {% if aviso.data_evento != None %}
-                                    <p>Acontecerá em <br><span>{{ aviso.data_evento|date:"d/m/Y" }}</span></p>
-                                {% else %}
-                                    <p>Acontecerá em <br><span>Sem data marcada<span></p>
-                                {% endif %}
-                            </a>
-                        </div>
-                    {% endfor %}
-            {% else %}
-                <p>Nenhum aviso disponível</p>
-            {% endif %}
-            </div>
-
-        </div>
-    
-        <div class="info-salao">
-            <h3>SALÃO DE FESTAS</h3>
-            {% if reservas %}
-                <ul class="container-salao-home">
-                {% for reserva in reservas %}
-                    {% if reserva.data >= data_atual %}
-                        <li style="border-bottom: 1px solid #694C00;">
-                            <span>{{ reserva.data }}</span><br>
-                            {{ reserva.morador.first_name }} {{ reserva.morador.last_name }}<br><br>
-                        </li><br>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-            {% else %}
-                <p>Nenhuma reserva disponível</p>
-            {% endif %}
-        </div>
-    </div>
-{% endblock %} {% endcomment %}
-
 {% block conteudo %}
 <div class="card mb-2">
   <div class="card-header text-center">
