@@ -17,9 +17,6 @@ urlpatterns = [
     
     path("avisos/", views.AvisosListaView.as_view(), name="avisos_lista"),
     path("avisos/<int:pk>", views.AvisosInfoView.as_view(), name="avisos_info"),
-    path("avisos/<int:pk>/alterar", views.AvisosUpdView.as_view(), name="avisos_upd"),
-    path("avisos/<int:pk>/deletar", views.AvisosDelView.as_view(), name="avisos_del"),
-    path("avisos/adicionar", views.AvisosAddView.as_view(), name="avisos_add"),
     
     path("reclamacoes/", views.ReclamacoesListaView.as_view(), name="reclamacoes_lista"),
     path("reclamacoes/<int:pk>", views.ReclamacoesInfoView.as_view(), name="reclamacoes_info"),
@@ -29,15 +26,7 @@ urlpatterns = [
     
     path("reunioes/", views.ReunioesListaView.as_view(), name="reunioes_lista"),
     path("reunioes/<int:pk>", views.ReunioesInfoView.as_view(), name="reunioes_info"),
-    path("reunioes/<int:pk>/alterar", views.ReunioesUpdView.as_view(), name="reunioes_upd"),
-    path("reunioes/<int:pk>/deletar", views.ReunioesDelView.as_view(), name="reunioes_del"),
-    path("reunioes/adicionar", views.ReunioesAddView.as_view(), name="reunioes_add"),
     
     path("reservas/", views.ReservasListaView.as_view(), name="reservas_lista"),
     path("reservas/adicionar/", views.ReservasAddView.as_view(), name="reservas_add"),
-    
-    # EXCLUSIVAMENTE ADMIN
-    path("moradores/adicionar/", views.MoradoresAddView.as_view(), name="moradores_add"),
-    path("moradores/<int:pk>/alterar", views.MoradoresUpdView.as_view(), name="moradores_upd"),
-    path("moradores/<int:pk>/deletar", views.MoradoresDelView.as_view(), name="moradores_del"),
 ]
