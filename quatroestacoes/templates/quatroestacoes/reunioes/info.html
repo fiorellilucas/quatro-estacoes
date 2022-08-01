@@ -4,15 +4,10 @@
 {% block titulo %}Reunião{% endblock titulo %}
 
 {% block conteudo %}
-    <div class="container-form">
-        <h3>REUNIÃO</h3>
-        <p><span>ASSUNTO: </span>{{ reuniao.assunto }}</p>
-        <p><span>DATA: </span>{{ reuniao.data }}</p>
-        {% if request.user.is_staff %}
-            <br>    
-            <a class="btn-acao" href="{% url 'quatroestacoes:reunioes_upd' reuniao.id %}">Alterar</a> <a class="btn-deletar" href="{% url 'quatroestacoes:reunioes_del' reuniao.id %}">Deletar</a>
-            <br>
-            <br>
-        {% endif %}
-    </div>
+<div class="card">
+  <div class="card-body card-aviso">
+    <h3 class="card-title">{{ reuniao.assunto }}</h3>
+    <p>{{ reuniao.data|date:"d/m/Y" }}</p>
+  </div>
+</div>
 {% endblock conteudo %}
