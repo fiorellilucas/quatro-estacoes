@@ -107,47 +107,6 @@ class MoradoresInfoView(LoginRequiredMixin, DetailView):
         return response
 
 
-class MoradoresAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
-
-    model = models.Morador
-    template_name = "quatroestacoes/moradores/adicionar.html"
-    form_class = forms.MoradorCreationForm
-    success_url = reverse_lazy("quatroestacoes:moradores_lista")
-
-    redirect_field_name = None
-
-    def test_func(self):
-        return self.request.user.is_staff
-
-
-class MoradoresUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-
-    model = models.Morador
-    template_name = "quatroestacoes/moradores/alterar.html"
-    form_class = forms.MoradorChangeForm
-    success_url = reverse_lazy("quatroestacoes:moradores_lista")
-
-    login_url = "quatroestacoes:index"
-    redirect_field_name = None
-
-    def test_func(self):
-        return self.request.user.is_staff
-
-
-class MoradoresDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-
-    model = models.Morador
-    template_name = "quatroestacoes/moradores/deletar.html"
-    success_url = reverse_lazy("quatroestacoes:moradores_lista")
-    context_object_name = "morador"
-
-    login_url = "quatroestacoes:index"
-    redirect_field_name = None
-
-    def test_func(self):
-        return self.request.user.is_staff
-
-
 class ReunioesListaView(LoginRequiredMixin, ListView):
 
     model = models.Reuniao
@@ -163,45 +122,6 @@ class ReunioesInfoView(LoginRequiredMixin, DetailView):
     model = models.Reuniao
     template_name = "quatroestacoes/reunioes/info.html"
     context_object_name = "reuniao"
-
-
-class ReunioesAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
-
-    model = models.Reuniao
-    template_name = "quatroestacoes/reunioes/adicionar.html"
-    form_class = forms.ReuniaoForm
-    success_url = reverse_lazy("quatroestacoes:reunioes_lista")
-    
-    def test_func(self):
-        return self.request.user.is_staff
-
-
-class ReunioesUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    
-    model = models.Reuniao
-    template_name = "quatroestacoes/reunioes/alterar.html"
-    form_class = forms.ReuniaoForm
-    success_url = reverse_lazy("quatroestacoes:reunioes_lista")
-    
-    login_url = "quatroestacoes:index"
-    redirect_field_name = None
-    
-    def test_func(self):
-        return self.request.user.is_staff
-
-
-class ReunioesDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    
-    model = models.Reuniao
-    template_name = "quatroestacoes/reunioes/deletar.html"
-    success_url = reverse_lazy("quatroestacoes:reunioes_lista")
-    context_object_name = "reuniao"
-    
-    login_url = "quatroestacoes:index"
-    redirect_field_name = None
-    
-    def test_func(self):
-        return self.request.user.is_staff    
 
 
 class ReclamacoesListaView(LoginRequiredMixin, ListView):
@@ -274,45 +194,6 @@ class AvisosInfoView(LoginRequiredMixin, DetailView):
     model = models.Aviso
     template_name = "quatroestacoes/avisos/info.html"
     context_object_name = "aviso"
-
-
-class AvisosAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
-
-    model = models.Aviso
-    template_name = "quatroestacoes/avisos/adicionar.html"
-    form_class = forms.AvisoForm
-    success_url = reverse_lazy("quatroestacoes:avisos_lista")
-    
-    def test_func(self):
-        return self.request.user.is_staff
-    
-    
-class AvisosUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    
-    model = models.Aviso
-    template_name = "quatroestacoes/avisos/alterar.html"
-    form_class = forms.AvisoForm
-    success_url = reverse_lazy("quatroestacoes:avisos_lista")
-    
-    login_url = "quatroestacoes:index"
-    redirect_field_name = None
-    
-    def test_func(self):
-        return self.request.user.is_staff
-
-
-class AvisosDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    
-    model = models.Aviso
-    template_name = "quatroestacoes/avisos/deletar.html"
-    success_url = reverse_lazy("quatroestacoes:avisos_lista")
-    context_object_name = "aviso"
-    
-    login_url = "quatroestacoes:index"
-    redirect_field_name = None
-    
-    def test_func(self):
-        return self.request.user.is_staff    
 
 
 class ReservasListaView(LoginRequiredMixin, ListView):
