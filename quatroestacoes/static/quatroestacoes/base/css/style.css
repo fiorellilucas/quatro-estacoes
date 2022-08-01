@@ -81,3 +81,10 @@ body {
   background-color: #ffe189;
   border: 1px solid black;
 }
+
+.btn-adicionar {
+  background-color: #eac556;
+  color: black;
+  border: 1px solid grey;
+  font-size: large;
+}
