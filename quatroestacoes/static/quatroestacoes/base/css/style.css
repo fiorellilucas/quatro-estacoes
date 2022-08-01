@@ -76,3 +76,8 @@ body {
 .card-morador-d {
   background-color: rgba(0, 0, 255, 0.15);
 }
+
+.btn-submit {
+  background-color: #ffe189;
+  border: 1px solid black;
+}
