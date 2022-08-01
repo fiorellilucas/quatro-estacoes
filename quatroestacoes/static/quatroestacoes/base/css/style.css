@@ -18,6 +18,17 @@ body {
   background-color: #fff1c9;
 }
 
+.dropdown-item.active {
+  background-color: transparent;
+  color: black;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  color: black;
+  font-weight: bold;
+}
+
 .card-aviso {
   background-color: #fff2cb;
 }
