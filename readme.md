@@ -41,13 +41,13 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 ## Screenshots
 
 <figure>
-  <img src="assets/readme/home_desktop.png">
   <figcaption>Home (desktop)</figcaption>
+  <img src="assets/readme/home_desktop.png">
 </figure>
 
 <figure>
-  <img src="assets/readme/home_mobile.png" height="500">
   <figcaption>Home (mobile)</figcaption>
+  <img src="assets/readme/home_mobile.png" height="500">
 </figure>
 
 ---
