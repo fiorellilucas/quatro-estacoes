@@ -3,11 +3,6 @@
 
 #### Status: **EM DESENVOLVIMENTO**
 
-
-[Link do site](https://quatroestacoes.herokuapp.com/)
-
-
-
 Projeto desenvolvido como **TCC** para o curso **Técnico em Desenvolvimento de Sistemas**, **ETEC Fernando Prestes**, pela equipe **3Tec**.
 
 ---
@@ -28,6 +23,8 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 - [x] Calendário
 - [x] Reuniões
 
+---
+
 ## Tecnologias utilizadas
 
 - HTML
@@ -38,6 +35,18 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 - Django
 - Heroku
 - PostgreSQL
+
+---
+
+## Screenshots
+
+Home (desktop)
+<img src="assets/readme/home_desktop.png">
+
+Home (mobile)
+<img src="assets/readme/home_mobile.png" height="500">
+
+---
 
 ## Equipe 3Tec
 
