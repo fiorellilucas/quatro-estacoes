@@ -4,47 +4,52 @@
 {% block active_home %}active{% endblock active_home %}
 
 {% block conteudo %}
-<div class="card mb-2">
-  <div class="card-header text-center">
-    <h3 class="mt-2">QUADRO DE AVISOS</h3>
-  </div>
-  {% if avisos %}
-  <ul class="list-group list-group-flush">
-    {% for aviso in avisos %}
-    <li class="list-group-item card-aviso">
-      <div class="card-body">
-        <h3 class="card-title">{{ aviso.assunto }}</h3>
-        <p class="card-text">{{ aviso.corpo|truncatechars:40 }}</p>
-        {% if aviso.data_evento != None %}
-          <p>Acontecerá em {{ aviso.data_evento|date:"d/m/Y" }}</p>
-        {% endif %}
-        <a class="stretched-link" href="{% url 'quatroestacoes:avisos_info' aviso.id %}"></a>
+<div class="row h-100">
+  <div class="col-lg-8 mb-3">
+    <div class="card mb-2 h-100">
+      <div class="card-header text-center">
+        <h3 class="mt-2">QUADRO DE AVISOS</h3>
       </div>
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  Nenhum aviso disponível
-  {% endif %}
-</div>
-
-<div class="card">
-  <div class="card-header text-center">
-    <h3 class="mt-2">SALÃO DE FESTAS</h3>
+      {% if avisos %}
+      <ul class="list-group list-group-flush">
+        {% for aviso in avisos %}
+        <li class="list-group-item card-aviso">
+          <div class="card-body">
+            <h3 class="card-title">{{ aviso.assunto }}</h3>
+            <p class="card-text">{{ aviso.corpo|truncatechars:40 }}</p>
+            {% if aviso.data_evento != None %}
+              <p>Acontecerá em {{ aviso.data_evento|date:"d/m/Y" }}</p>
+            {% endif %}
+            <a class="stretched-link" href="{% url 'quatroestacoes:avisos_info' aviso.id %}"></a>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      Nenhum aviso disponível
+      {% endif %}
+    </div>
   </div>
-  {% if reservas %}
-  <ul class="list-group list-group-flush">
-    {% for reserva in reservas %}
-      <li class="list-group-item card-aviso">
-        <div class="card-body">
-          <h5 class="card-title">{{ reserva.data }}</h5>
-          <h6 class="card-text">{{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</h6>
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  Nenhuma reserva disponível
-  {% endif %}
+  <div class="col-lg-4">
+    <div class="card h-100">
+      <div class="card-header text-center">
+        <h3 class="mt-2">SALÃO DE FESTAS</h3>
+      </div>
+      {% if reservas %}
+      <ul class="list-group list-group-flush">
+        {% for reserva in reservas %}
+          <li class="list-group-item card-aviso">
+            <div class="card-body">
+              <h5 class="card-title">{{ reserva.data }}</h5>
+              <h6 class="card-text">{{ reserva.morador.first_name }} {{ reserva.morador.last_name }}</h6>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      Nenhuma reserva disponível
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock conteudo %}

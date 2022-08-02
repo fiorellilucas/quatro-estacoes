@@ -4,6 +4,9 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding: 1vh;
+  height: 100vh;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .navbar {
@@ -87,4 +90,15 @@ body {
   color: black;
   border: 1px solid grey;
   font-size: large;
+}
+
+.card {
+  background-color: #fff2cb;
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
 }
