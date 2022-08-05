@@ -1,26 +1,20 @@
-{% extends 'quatroestacoes/base.html' %}
-{% block titulo %}Reservar salão{% endblock titulo %}
+{% extends 'quatroestacoes/base.html' %} 
+
+{% load crispy_forms_tags %}
+
+{% block titulo %}Reservar salão{% endblock titulo %} 
 
 {% block conteudo %}
-    <div class="container-form">
-        {{ form.errors }} 
-        <form method="post">{% csrf_token %}
-            <h3>RESERVAR SALÃO DE FESTAS</h3>
-                {% if request.user.is_staff %}
-                    <p>
-                        <span>Morador:</span> 
-                        {{ form.morador }}
-                    </p>
-                {% else %}
-                    <p>
-                        <span>Morador:</span> 
-                        <select id='id_morador' name='morador' required=''>
-                            <option value='{{ request.user.id }}' selected >{{ request.user }}</option>
-                        </select>
-                    </p>
-                {% endif %}
-                <p><span>Data:</span> {{ form.data }}</p>
-            <button type="submit" class="btn-acao">Reservar salão</button>
-        </form>
+<form method="post">
+  {% csrf_token %}
+  <div class="card">
+    <div class="card-header text-center">
+      <h5 class="mb-0 p-2 ps-1">FAZER RESERVA</h5>
     </div>
+  </div>
+  <span>{{ form|crispy }}</span>
+  <button class="btn btn-submit" type="submit">
+    Reservar
+  </button>
+</form>
 {% endblock conteudo %}
