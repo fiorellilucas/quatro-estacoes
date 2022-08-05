@@ -1,7 +1,7 @@
 
 # TCC Quatro Estações
 
-#### Status: **EM DESENVOLVIMENTO**
+#### Status: **APRESENTADO PARA A BANCA**
 
 Projeto desenvolvido como **TCC** para o curso **Técnico em Desenvolvimento de Sistemas**, **ETEC Fernando Prestes**, pela equipe **3Tec**.
 
