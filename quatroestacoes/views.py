@@ -5,9 +5,18 @@ from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
+from rest_framework import viewsets, permissions
+
 from itertools import chain
 
-from . import models, forms
+from . import models, forms, serializers
+
+
+class MoradorViewSet(viewsets.ModelViewSet):
+
+    queryset = models.Morador.objects.all()
+    serializer_class = serializers.MoradorSerializer
+    permission_classes = [permissions.AllowAny]
 
 
 class MyLoginView(LoginView):
