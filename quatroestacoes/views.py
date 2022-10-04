@@ -19,6 +19,34 @@ class MoradorViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
+class ReservaViewSet(viewsets.ModelViewSet):
+
+    queryset = models.Reserva.objects.all()
+    serializer_class = serializers.ReservaSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class ReuniaoViewSet(viewsets.ModelViewSet):
+
+    queryset = models.Reuniao.objects.all()
+    serializer_class = serializers.ReuniaoSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class AvisoViewSet(viewsets.ModelViewSet):
+
+    queryset = models.Aviso.objects.all()
+    serializer_class = serializers.AvisoSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class ReclamacaoViewSet(viewsets.ModelViewSet):
+
+    queryset = models.Reclamacao.objects.all()
+    serializer_class = serializers.ReclamacaoSerializer
+    permission_classes = [permissions.AllowAny]
+
+
 class MyLoginView(LoginView):
 
     template_name = "quatroestacoes/login.html"
@@ -62,37 +90,38 @@ class IndexView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context["avisos"] = models.Aviso.objects.all().order_by("-data_postagem")[:4]
-        context["reservas"] = models.Reserva.objects.filter(data__gte=timezone.localdate()).order_by("data")[:6]
+        context["avisos"] = models.Aviso.objects.all().order_by(
+            "-data_postagem")[:4]
+        context["reservas"] = models.Reserva.objects.filter(
+            data__gte=timezone.localdate()).order_by("data")[:6]
         return context
 
 
 class CalendarioView(LoginRequiredMixin, TemplateView):
-    
+
     template_name = "quatroestacoes/calendario.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+
         reservas = list(models.Reserva.objects.all().values())
         reunioes = list(models.Reuniao.objects.all().values())
-        
+
         for reuniao in reunioes:
             reuniao["data"] = timezone.localtime(reuniao["data"]).date()
             reuniao["tipo_evento"] = "reuniao"
-            
+
         for reserva in reservas:
             morador = models.Morador.objects.get(pk=reserva["morador_id"])
             reserva["morador_nome"] = morador.first_name
             reserva["morador_sobrenome"] = morador.last_name
             reserva["tipo_evento"] = "reserva"
 
-            
         eventos = list(chain(reunioes, reservas))
         eventos = sorted(eventos, key=lambda t: t["data"])
-        
+
         context["eventos"] = eventos
-                
+
         return context
 
 
@@ -120,10 +149,11 @@ class ReunioesListaView(LoginRequiredMixin, ListView):
 
     model = models.Reuniao
     template_name = "quatroestacoes/reunioes/lista.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["reunioes"] = models.Reuniao.objects.filter(data__gte=timezone.localdate()).order_by("data")
+        context["reunioes"] = models.Reuniao.objects.filter(
+            data__gte=timezone.localdate()).order_by("data")
         return context
 
 
@@ -137,10 +167,11 @@ class ReclamacoesListaView(LoginRequiredMixin, ListView):
 
     model = models.Reclamacao
     template_name = "quatroestacoes/reclamacoes/lista.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["reclamacoes"] = models.Reclamacao.objects.all().order_by("-data_postagem")
+        context["reclamacoes"] = models.Reclamacao.objects.all().order_by(
+            "-data_postagem")
         return context
 
 
@@ -157,44 +188,45 @@ class ReclamacoesAddView(LoginRequiredMixin, CreateView):
     template_name = "quatroestacoes/reclamacoes/adicionar.html"
     form_class = forms.ReclamacaoForm
     success_url = reverse_lazy("quatroestacoes:reclamacoes_lista")
-    
-    
+
+
 class ReclamacoesUpdView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    
+
     model = models.Reclamacao
     template_name = "quatroestacoes/reclamacoes/alterar.html"
     form_class = forms.ReclamacaoForm
     success_url = reverse_lazy("quatroestacoes:reclamacoes_lista")
-    
+
     login_url = "quatroestacoes:index"
     redirect_field_name = None
-    
+
     def test_func(self):
         return self.request.user.is_staff
 
 
 class ReclamacoesDelView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    
+
     model = models.Reclamacao
     template_name = "quatroestacoes/reclamacoes/deletar.html"
     success_url = reverse_lazy("quatroestacoes:reclamacoes_lista")
     context_object_name = "reclamacao"
-    
+
     login_url = "quatroestacoes:index"
     redirect_field_name = None
-    
+
     def test_func(self):
-        return self.request.user.is_staff  
+        return self.request.user.is_staff
 
 
 class AvisosListaView(LoginRequiredMixin, ListView):
 
     model = models.Aviso
     template_name = "quatroestacoes/avisos/lista.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["avisos"] = models.Aviso.objects.all().order_by("-data_postagem")
+        context["avisos"] = models.Aviso.objects.all().order_by(
+            "-data_postagem")
         return context
 
 
@@ -209,10 +241,11 @@ class ReservasListaView(LoginRequiredMixin, ListView):
 
     model = models.Reserva
     template_name = "quatroestacoes/reservas/lista.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["reservas"] = models.Reserva.objects.filter(data__gte=timezone.localdate()).order_by("data")
+        context["reservas"] = models.Reserva.objects.filter(
+            data__gte=timezone.localdate()).order_by("data")
         return context
 
 

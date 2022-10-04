@@ -5,6 +5,10 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'moradores', views.MoradorViewSet)
+router.register(r'reservas', views.ReservaViewSet)
+router.register(r'reunioes', views.ReuniaoViewSet)
+router.register(r'avisos', views.AvisoViewSet)
+router.register(r'reclamacoes', views.ReclamacaoViewSet)
 
 app_name = "quatroestacoes"
 urlpatterns = [
