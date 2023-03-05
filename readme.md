@@ -1,14 +1,9 @@
 
 # TCC Quatro Estações
 
-#### Status: **EM DESENVOLVIMENTO**
+#### Status: **CONCLUÍDO E APRESENTADO PARA A BANCA**
 
-
-Link: quatroestacoes.herokuapp.com
-
-
-
-Projeto desenvolvido como **TCC** para o curso **Técnico em Desenvolvimento de Sistemas**, **ETEC Fernando Prestes**, pela equipe **3Tec**.
+Projeto desenvolvido como TCC para o curso de **Técnico em Desenvolvimento de Sistemas**, na **ETEC Fernando Prestes**, pela equipe **3Tec**.
 
 ---
 
