@@ -33,6 +33,10 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 - Heroku
 - PostgreSQL
 
+## Principais telas
+
+
+
 ## Equipe 3Tec
 
 - Gabriel Merlino
