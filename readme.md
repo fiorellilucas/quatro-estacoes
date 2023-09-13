@@ -35,7 +35,25 @@ O projeto tem como principal objetivo providenciar aos moradores do **Condomíni
 
 ## Principais telas
 
+- Login
 
+![Tela de login](/telas/login.png)
+
+- Home
+
+![Tela da home](/telas/home.png)
+
+- Lista de moradores
+
+![Tela dos moradores](/telas/moradores.png)
+
+- Calendário
+
+![Tela do calendário](/telas/calendario.png)
+
+- Avisos
+
+![Tela de avisos](/telas/avisos.png)
 
 ## Equipe 3Tec
 
